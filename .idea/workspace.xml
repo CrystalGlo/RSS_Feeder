@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a8751c0f-6277-4020-93ec-c045bb80f5c5" name="Default Changelist" comment="" />
+    <list default="true" id="a8751c0f-6277-4020-93ec-c045bb80f5c5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/GUI/add_rss_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/GUI/add_rss_gui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/test/unit/test_mainWindow.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/easy-install.pth" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/easy-install.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/pip-selfcheck.json" afterDir="false" />
+    </list>
+    <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -9,17 +17,35 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/RSS_Feeder$main.coverage" NAME="main Coverage Results" MODIFIED="1550465563185" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$main.coverage" NAME="main Coverage Results" MODIFIED="1550953498282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$rss_gui.coverage" NAME="rss_gui Coverage Results" MODIFIED="1550018959889" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test_database_py.coverage" NAME="Unittests in test_database.py Coverage Results" MODIFIED="1550955602330" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/unit" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$add_rss_gui.coverage" NAME="add_rss_gui Coverage Results" MODIFIED="1550018970726" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="RSS_Feeder" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_app/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="51">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -28,22 +54,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main_app/GUI/rss_gui.py">
+        <entry file="file://$PROJECT_DIR$/main_app/GUI/add_rss_gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1844">
-              <caret line="114" column="35" selection-start-line="114" selection-end-line="115" />
-              <folding>
-                <element signature="e#196#238#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="221">
+              <caret line="13" column="61" selection-start-line="13" selection-start-column="61" selection-end-line="13" selection-end-column="61" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main_app/GUI/add_rss_gui.py">
+        <entry file="file://$PROJECT_DIR$/main_app/test/unit/test_database.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="70" column="10" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
+            <state relative-caret-position="204">
+              <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,9 +93,20 @@
       <find>action_btn_abonner</find>
       <find>Ui_MainWindow</find>
       <find>subs</find>
-      <find>img</find>
       <find>edit</find>
+      <find>update_frequency_comboBox</find>
+      <find>background</find>
+      <find>img</find>
       <find>btn</find>
+      <find>category</find>
+      <find>translate</find>
+      <find>AddRssWindow</find>
+      <find>localhost</find>
+      <find>mongodb</find>
+      <find>openAddRssWindow</find>
+      <find>addRss</find>
+      <find>rssCategory</find>
+      <find>category_</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -85,18 +122,19 @@
         <option value="$PROJECT_DIR$/main_app/add_rss_gui.py" />
         <option value="$PROJECT_DIR$/main_app/test/unit/test_mainWindow.py" />
         <option value="$PROJECT_DIR$/main_app/__init__.py" />
-        <option value="$PROJECT_DIR$/main_app/GUI/rss_gui.py" />
-        <option value="$PROJECT_DIR$/main_app/main.py" />
         <option value="$PROJECT_DIR$/main_app/src/AddRSS.py" />
+        <option value="$PROJECT_DIR$/main_app/GUI/rss_gui.py" />
         <option value="$PROJECT_DIR$/main_app/GUI/add_rss_gui.py" />
+        <option value="$PROJECT_DIR$/main_app/main.py" />
+        <option value="$PROJECT_DIR$/main_app/test/unit/test_database.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1114" />
-    <option name="height" value="770" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="643" />
+    <option name="y" value="8" />
+    <option name="width" value="791" />
+    <option name="height" value="721" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -106,7 +144,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -116,138 +153,29 @@
             </path>
             <path>
               <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RSS_Feeder" type="462c0819:PsiDirectoryNode" />
-              <item name="main_app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RSS_Feeder" type="462c0819:PsiDirectoryNode" />
-              <item name="main_app" type="462c0819:PsiDirectoryNode" />
-              <item name="GUI" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RSS_Feeder" type="462c0819:PsiDirectoryNode" />
-              <item name="main_app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RSS_Feeder" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RSS_Feeder" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="Lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RSS_Feeder" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="Lib" type="462c0819:PsiDirectoryNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RSS_Feeder" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="Lib" type="462c0819:PsiDirectoryNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-              <item name="PyQt5" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RSS_Feeder" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="Lib" type="462c0819:PsiDirectoryNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-              <item name="PyQt5" type="462c0819:PsiDirectoryNode" />
-              <item name="Qt" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RSS_Feeder" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="Lib" type="462c0819:PsiDirectoryNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-              <item name="PyQt5" type="462c0819:PsiDirectoryNode" />
-              <item name="Qt" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RSS_Feeder" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="Lib" type="462c0819:PsiDirectoryNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-              <item name="PyQt5" type="462c0819:PsiDirectoryNode" />
-              <item name="Qt" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-              <item name="imageformats" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; Python 3.7 (RSS_Feeder) &gt;" type="70bed36:NamedLibraryElementNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; Python 3.7 (RSS_Feeder) &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; Python 3.7 (RSS_Feeder) &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-              <item name="PyQt5" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; Python 3.7 (RSS_Feeder) &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-              <item name="PyQt5" type="462c0819:PsiDirectoryNode" />
-              <item name="Qt" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; Python 3.7 (RSS_Feeder) &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-              <item name="PyQt5" type="462c0819:PsiDirectoryNode" />
-              <item name="Qt" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="&lt; Python 3.7 (RSS_Feeder) &gt;" type="70bed36:NamedLibraryElementNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-              <item name="PyQt5" type="462c0819:PsiDirectoryNode" />
-              <item name="Qt" type="462c0819:PsiDirectoryNode" />
-              <item name="plugins" type="462c0819:PsiDirectoryNode" />
-              <item name="imageformats" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/main_app/test/unit" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Ignored.Files" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings module-name="RSS_Feeder" is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="RSS_Feeder" />
+      </console-settings>
+    </option>
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -266,7 +194,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python tests.Unittests in test_database.py">
     <configuration name="add_rss_gui" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RSS_Feeder" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -333,8 +261,24 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Unittests in test_database.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="RSS_Feeder" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main_app/test/unit" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/main_app/test/unit/test_database.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.Unittests in test_database.py" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.add_rss_gui" />
         <item itemvalue="Python.rss_gui" />
@@ -355,37 +299,60 @@
       <workItem from="1549988966037" duration="9945000" />
       <workItem from="1550339109118" duration="6942000" />
       <workItem from="1550431346944" duration="13202000" />
+      <workItem from="1550633627077" duration="2189000" />
+      <workItem from="1550726550124" duration="50000" />
+      <workItem from="1550789873728" duration="2199000" />
+      <workItem from="1550808119822" duration="799000" />
+      <workItem from="1550943716118" duration="5986000" />
+      <workItem from="1550950982616" duration="4831000" />
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="Unittests_in_test_database_py - 2019.02.23 at 15h 58m 20s.xml">
+      <configuration name="Unittests in test_database.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_database_py - 2019.02.23 at 16h 00m 03s.xml">
+      <configuration name="Unittests in test_database.py" configurationId="tests" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36109000" />
+    <option name="totallyTimeSpent" value="63693000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="643" y="8" width="791" height="721" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25416037" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.57045144" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24897401" />
+      <window_info id="Favorites" order="2" side_tool="true" weight="0.32968536" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24713585" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.43537414" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.28805238" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.3289689" />
+      <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.29081634" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.4304419" />
+      <window_info anchor="bottom" id="TODO" order="11" weight="0.3282313" />
+      <window_info anchor="bottom" id="Version Control" order="12" weight="0.3282313" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Database" order="4" weight="0.32980332" />
+      <window_info anchor="right" id="Mongo Explorer" order="5" visible="true" weight="0.34336525" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -393,53 +360,91 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/rss_gui.py" />
-    <entry file="file://$PROJECT_DIR$/main_app/test/unit/test_mainWindow.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/GUI/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/main_app/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/src/img/newsImg.png">
-      <provider selected="true" editor-type-id="images" />
+    <entry file="file://$PROJECT_DIR$/main_app/src/img/newsImg.png" />
+    <entry file="file://$PROJECT_DIR$/main_app/src/AddRSS.py" />
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/pymongo/client_session.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/main.py">
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/pymongo/topology.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="46">
+          <caret line="182" column="21" selection-start-line="182" selection-start-column="21" selection-end-line="182" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/src/AddRSS.py">
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/pymongo/database.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="19142">
+          <caret line="1144" column="23" selection-start-line="1144" selection-start-column="14" selection-end-line="1144" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/pymongo-3.7.2.dist-info/INSTALLER">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/pymongo-3.7.2.dist-info/METADATA">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/pymongo-3.7.2.dist-info/RECORD">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/pymongo-3.7.2.dist-info/top_level.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/pymongo/mongo_client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1632">
+          <caret line="136" column="54" selection-start-line="136" selection-start-column="47" selection-end-line="136" selection-end-column="54" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main_app/GUI/rss_gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1844">
-          <caret line="114" column="35" selection-start-line="114" selection-end-line="115" />
+        <state relative-caret-position="1921">
+          <caret line="114" column="71" selection-start-line="114" selection-start-column="55" selection-end-line="114" selection-end-column="71" />
           <folding>
             <element signature="e#196#238#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/GUI/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/pymongo-3.7.2.dist-info/WHEEL">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main_app/GUI/add_rss_gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="70" column="10" selection-start-line="70" selection-start-column="10" selection-end-line="70" selection-end-column="10" />
+        <state relative-caret-position="221">
+          <caret line="13" column="61" selection-start-line="13" selection-start-column="61" selection-end-line="13" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/test/unit/test_database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
