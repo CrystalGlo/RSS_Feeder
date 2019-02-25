@@ -8,7 +8,6 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from main_app.GUI.add_rss_gui import Ui_AddRssWindow
-# QtCore.QCoreApplication.addLibraryPath(path.join(path.dirname(QtCore.__file__), "plugins"))
 QtGui.QImageReader.supportedImageFormats()
 
 
