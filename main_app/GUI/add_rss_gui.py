@@ -5,17 +5,28 @@
 # Created by: PyQt5 UI code generator 5.11.3
 #
 # WARNING! All changes made in this file will be lost!
-
+import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
+import feedparser
+import pymongo
 
 class Ui_AddRssWindow(object):
     def addRss(self):
-        self.rssAddress = self.rss_adress_lineEdit.text()
-        self.rssCategory = self.category_comboBox.currentText()
-        self.updateFrequency = self.update_frequency_comboBox.currentText()
-        print(self.rssAddress)
-        print(self.rssCategory)
-        print(self.updateFrequency)
+        # Connect to rssDB
+        client = pymongo.MongoClient()
+        rssDB = client.get_database("rssDB")
+        rssCollection = rssDB.get_collection("rss_collection")
+        # Get main RSS information
+        rssAddress = self.rss_adress_lineEdit.text()
+        rssCategory = self.category_comboBox.currentText()
+        updateFreq = self.update_frequency_comboBox.currentText()
+        # Read entries from RSS feed
+        feeds = feedparser.parse(rssAddress)
+        # Save data to rssDB
+        for i in range(1, 10):
+            rssCollection.insert({"rss_address": rssAddress, "rss_category": rssCategory, "update_freq": updateFreq,
+                                  "news_title": feeds.entries[i]['title'], "news_link": feeds.entries[i]['link'],
+                                  "news_summary": feeds.entries[i]['summary'], "news_date": feeds.entries[i]['published']})
 
     def setupUi(self, AddRssWindow):
         AddRssWindow.setObjectName("AddRssWindow")
@@ -93,7 +104,6 @@ class Ui_AddRssWindow(object):
 
 
 if __name__ == "__main__":
-    import sys
     app = QtWidgets.QApplication(sys.argv)
     app.setStyle('Fusion')
     AddRssWindow = QtWidgets.QMainWindow()
