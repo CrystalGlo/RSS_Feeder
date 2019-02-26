@@ -9,6 +9,7 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 import feedparser
 import pymongo
+import pprint
 
 class Ui_AddRssWindow(object):
     def addRss(self):
@@ -23,10 +24,12 @@ class Ui_AddRssWindow(object):
         # Read entries from RSS feed
         feeds = feedparser.parse(rssAddress)
         # Save data to rssDB
-        for i in range(1, 10):
-            rssCollection.insert({"rss_address": rssAddress, "rss_category": rssCategory, "update_freq": updateFreq,
-                                  "news_title": feeds.entries[i]['title'], "news_link": feeds.entries[i]['link'],
-                                  "news_summary": feeds.entries[i]['summary'], "news_date": feeds.entries[i]['published']})
+        if rssAddress != "":
+            for i in range(1, 10):
+                rssCollection.insert_many([{"rss_address": rssAddress, "rss_category": rssCategory, "update_freq": updateFreq,
+                                            "news_title": feeds.entries[i]['title'], "news_link": feeds.entries[i]['link'],
+                                            "news_summary": feeds.entries[i]['summary'], "news_date": feeds.entries[i]['published']}])
+        rssCollection.find_one_and_delete({"rss_address": ""})
 
     def setupUi(self, AddRssWindow):
         AddRssWindow.setObjectName("AddRssWindow")

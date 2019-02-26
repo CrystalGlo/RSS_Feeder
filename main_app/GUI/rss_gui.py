@@ -7,9 +7,11 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from main_app.GUI.add_rss_gui import Ui_AddRssWindow
-QtGui.QImageReader.supportedImageFormats()
+from PyQt5.QtWidgets import QTableWidgetItem
 
+from main_app.GUI.add_rss_gui import Ui_AddRssWindow
+import pprint
+import pymongo
 
 class Ui_MainWindow(object):
     def openAddRssWindow(self):
@@ -19,6 +21,11 @@ class Ui_MainWindow(object):
         self.window.show()
 
     def setupUi(self, MainWindow):
+        # Connect to rssDB
+        client = pymongo.MongoClient()
+        rssDB = client.get_database("rssDB")
+        rssCollection = rssDB.get_collection("rss_collection")
+
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(839, 551)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -62,6 +69,15 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(2, item)
         self.gridLayout_2.addWidget(self.tableWidget, 0, 0, 1, 1)
+        # Add RSS feeds to the news table
+        rowPosition = self.tableWidget.rowCount()
+        self.tableWidget.insertRow(rowPosition)
+        for data in rssCollection.find({"rss_address": {"$exists": True}}):
+            pprint.pprint(data["news_title"])
+            self.tableWidget.setItem(rowPosition, 0, QTableWidgetItem(data["news_title"]))
+            self.tableWidget.setItem(rowPosition, 1, QTableWidgetItem(data["rss_address"]))
+            self.tableWidget.setItem(rowPosition, 2, QTableWidgetItem(data["news_date"]))
+
         self.frame_2 = QtWidgets.QFrame(self.frame)
         self.frame_2.setGeometry(QtCore.QRect(10, 270, 831, 231))
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -152,6 +168,7 @@ class Ui_MainWindow(object):
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
+    app.setStyle('Fusion')
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
