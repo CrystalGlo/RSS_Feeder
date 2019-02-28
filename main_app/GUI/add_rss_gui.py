@@ -6,10 +6,9 @@
 #
 # WARNING! All changes made in this file will be lost!
 import sys
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
 import feedparser
 import pymongo
-import pprint
 
 class Ui_AddRssWindow(object):
     def addRss(self):
@@ -21,14 +20,15 @@ class Ui_AddRssWindow(object):
         rssAddress = self.rss_adress_lineEdit.text()
         rssCategory = self.category_comboBox.currentText()
         updateFreq = self.update_frequency_comboBox.currentText()
-        # Read entries from RSS feed
+        # Read entries from RSS feeds
         feeds = feedparser.parse(rssAddress)
-        # Save data to rssDB
+        # Save entries data to rssDB
         if rssAddress != "":
-            for i in range(1, 10):
+            for i in range(1, len(feeds.entries)):
                 rssCollection.insert_many([{"rss_address": rssAddress, "rss_category": rssCategory, "update_freq": updateFreq,
                                             "news_title": feeds.entries[i]['title'], "news_link": feeds.entries[i]['link'],
                                             "news_summary": feeds.entries[i]['summary'], "news_date": feeds.entries[i]['published']}])
+        # Delete the first empty row used to create rssCollection
         rssCollection.find_one_and_delete({"rss_address": ""})
 
     def setupUi(self, AddRssWindow):
@@ -105,6 +105,11 @@ class Ui_AddRssWindow(object):
         self.btn_submit_add.setText(_translate("AddRssWindow", "Valider"))
         self.btn_cancel_add.setText(_translate("AddRssWindow", "Annuler"))
 
+    def getRssAddress(self):
+        return self.rss_adress_lineEdit.text()
+
+    def setRssAddress(self, newRssAddress):
+        self.rss_adress_lineEdit.setText(newRssAddress)
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

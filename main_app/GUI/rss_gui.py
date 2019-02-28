@@ -7,10 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QTableWidgetItem
-
 from main_app.GUI.add_rss_gui import Ui_AddRssWindow
-import pprint
 import pymongo
 
 class Ui_MainWindow(object):
@@ -59,7 +56,7 @@ class Ui_MainWindow(object):
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.tableWidget = QtWidgets.QTableWidget(self.gridLayoutWidget)
         self.tableWidget.setGridStyle(QtCore.Qt.DashLine)
-        self.tableWidget.setRowCount(10)
+        # self.tableWidget.setRowCount(10)
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setObjectName("tableWidget")
         item = QtWidgets.QTableWidgetItem()
@@ -72,11 +69,12 @@ class Ui_MainWindow(object):
         # Add RSS feeds to the news table
         rowPosition = self.tableWidget.rowCount()
         self.tableWidget.insertRow(rowPosition)
-        for data in rssCollection.find({"rss_address": {"$exists": True}}):
-            pprint.pprint(data["news_title"])
-            self.tableWidget.setItem(rowPosition, 0, QTableWidgetItem(data["news_title"]))
-            self.tableWidget.setItem(rowPosition, 1, QTableWidgetItem(data["rss_address"]))
-            self.tableWidget.setItem(rowPosition, 2, QTableWidgetItem(data["news_date"]))
+        # Show news details in the table
+        # for data in rssCollection.find({"rss_address": {"$exists": True}}):
+        #     pprint.pprint(data["news_title"])
+            # self.tableWidget.setItem(rowPosition, 0, QTableWidgetItem(data["news_title"]))
+            # self.tableWidget.setItem(rowPosition, 1, QTableWidgetItem(data["rss_address"]))
+            # self.tableWidget.setItem(rowPosition, 2, QTableWidgetItem(data["news_date"]))
 
         self.frame_2 = QtWidgets.QFrame(self.frame)
         self.frame_2.setGeometry(QtCore.QRect(10, 270, 831, 231))

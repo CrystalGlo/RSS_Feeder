@@ -6,8 +6,16 @@ import pymongo
 
 class MainWindow(Ui_MainWindow):
     def __init__(self, dialog):
-        Ui_MainWindow.__init__(self)
-        self.setupUi(dialog)
+        # Ui_MainWindow.__init__(self)
+        # self.setupUi(dialog)
+
+        self.main_ui = Ui_MainWindow()
+        # self.main_ui.setupUi(QtWidgets.QMainWindow)
+
+        # self.window = QtWidgets.QMainWindow()
+        # self.ui = Ui_MainWindow()
+        # self.ui.setupUi(self.window)
+        # self.window.show()
 
 
 def create_rss_db():
