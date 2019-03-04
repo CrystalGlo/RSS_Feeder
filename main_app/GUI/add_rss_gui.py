@@ -20,10 +20,10 @@ class Ui_AddRssWindow(object):
         rssAddress = self.rss_adress_lineEdit.text()
         rssCategory = self.category_comboBox.currentText()
         updateFreq = self.update_frequency_comboBox.currentText()
-        # Read entries from RSS feeds
-        feeds = feedparser.parse(rssAddress)
-        # Save entries data to rssDB
         if rssAddress != "":
+            # Read entries from RSS feeds
+            feeds = feedparser.parse(rssAddress)
+            # Save entries data to rssDB
             for i in range(1, len(feeds.entries)):
                 rssCollection.insert_many(
                     [{"rss_address": rssAddress, "rss_category": rssCategory, "update_freq": updateFreq,
@@ -105,12 +105,6 @@ class Ui_AddRssWindow(object):
         self.label_2.setText(_translate("AddRssWindow", "Fréquence de mise à jour :"))
         self.btn_submit_add.setText(_translate("AddRssWindow", "Valider"))
         self.btn_cancel_add.setText(_translate("AddRssWindow", "Annuler"))
-
-    def getRssAddress(self):
-        return self.rss_adress_lineEdit.text()
-
-    def setRssAddress(self, newRssAddress):
-        self.rss_adress_lineEdit.setText(newRssAddress)
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
