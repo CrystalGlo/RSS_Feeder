@@ -11,7 +11,7 @@ import feedparser
 import pymongo
 
 class Ui_AddRssWindow(object):
-    def addRss(self):
+    def getAndSaveRssFeeds(self):
         # Connect to rssDB
         client = pymongo.MongoClient()
         rssDB = client.get_database("rssDB")
@@ -25,9 +25,10 @@ class Ui_AddRssWindow(object):
         # Save entries data to rssDB
         if rssAddress != "":
             for i in range(1, len(feeds.entries)):
-                rssCollection.insert_many([{"rss_address": rssAddress, "rss_category": rssCategory, "update_freq": updateFreq,
-                                            "news_title": feeds.entries[i]['title'], "news_link": feeds.entries[i]['link'],
-                                            "news_summary": feeds.entries[i]['summary'], "news_date": feeds.entries[i]['published']}])
+                rssCollection.insert_many(
+                    [{"rss_address": rssAddress, "rss_category": rssCategory, "update_freq": updateFreq,
+                      "news_title": feeds.entries[i]['title'], "news_link": feeds.entries[i]['link'],
+                      "news_summary": feeds.entries[i]['summary'], "news_date": feeds.entries[i]['published']}])
         # Delete the first empty row used to create rssCollection
         rssCollection.find_one_and_delete({"rss_address": ""})
 
@@ -81,7 +82,7 @@ class Ui_AddRssWindow(object):
         self.btn_submit_add = QtWidgets.QPushButton(self.frame_2)
         self.btn_submit_add.setObjectName("btn_submit_add")
         self.gridLayout_2.addWidget(self.btn_submit_add, 0, 0, 1, 1)
-        self.btn_submit_add.clicked.connect(self.addRss)
+        self.btn_submit_add.clicked.connect(self.getAndSaveRssFeeds)
 
         self.btn_cancel_add = QtWidgets.QPushButton(self.frame_2)
         self.btn_cancel_add.setObjectName("btn_cancel_add")
