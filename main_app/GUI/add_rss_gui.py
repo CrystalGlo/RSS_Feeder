@@ -7,30 +7,18 @@
 # WARNING! All changes made in this file will be lost!
 import sys
 from PyQt5 import QtCore, QtWidgets
-import feedparser
-import pymongo
+from main_app.src.rssController import RssController
 
 class Ui_AddRssWindow(object):
-    def getAndSaveRssFeeds(self):
-        # Connect to rssDB
-        client = pymongo.MongoClient()
-        rssDB = client.get_database("rssDB")
-        rssCollection = rssDB.get_collection("rss_collection")
+    def validate(self):
         # Get main RSS information
         rssAddress = self.rss_adress_lineEdit.text()
         rssCategory = self.category_comboBox.currentText()
         updateFreq = self.update_frequency_comboBox.currentText()
-        if rssAddress != "":
-            # Read entries from RSS feeds
-            feeds = feedparser.parse(rssAddress)
-            # Save entries data to rssDB
-            for i in range(1, len(feeds.entries)):
-                rssCollection.insert_many(
-                    [{"rss_address": rssAddress, "rss_category": rssCategory, "update_freq": updateFreq,
-                      "news_title": feeds.entries[i]['title'], "news_link": feeds.entries[i]['link'],
-                      "news_summary": feeds.entries[i]['summary'], "news_date": feeds.entries[i]['published']}])
-        # Delete the first empty row used to create rssCollection
-        rssCollection.find_one_and_delete({"rss_address": ""})
+        # Get and Save Rss entries
+        rssController = RssController()
+        save = rssController.getAndSaveRssEntries
+        save(rssAddress, rssCategory, updateFreq)
 
     def setupUi(self, AddRssWindow):
         AddRssWindow.setObjectName("AddRssWindow")
@@ -82,7 +70,7 @@ class Ui_AddRssWindow(object):
         self.btn_submit_add = QtWidgets.QPushButton(self.frame_2)
         self.btn_submit_add.setObjectName("btn_submit_add")
         self.gridLayout_2.addWidget(self.btn_submit_add, 0, 0, 1, 1)
-        self.btn_submit_add.clicked.connect(self.getAndSaveRssFeeds)
+        self.btn_submit_add.clicked.connect(self.validate)
 
         self.btn_cancel_add = QtWidgets.QPushButton(self.frame_2)
         self.btn_cancel_add.setObjectName("btn_cancel_add")
