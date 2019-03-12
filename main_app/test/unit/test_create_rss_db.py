@@ -2,7 +2,7 @@ import unittest
 from pymongo import MongoClient
 import main
 
-class TestCreateDatabase(unittest.TestCase):
+class TestCreateRssDb(unittest.TestCase):
     def test_db_exists(self):
         main.create_rss_db()
         client = MongoClient()
@@ -18,5 +18,6 @@ class TestCreateDatabase(unittest.TestCase):
 
         self.assertTrue("rss_collection" in collectionList)
 
-suite = unittest.TestLoader().loadTestsFromTestCase(TestCreateDatabase)
+
+suite = unittest.TestLoader().loadTestsFromTestCase(TestCreateRssDb)
 unittest.TextTestRunner(verbosity=2).run(suite)

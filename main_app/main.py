@@ -1,8 +1,7 @@
 import sys
-from PyQt5 import QtWidgets
+from PyQt5 import QtWidgets, QtGui
 from main_app.GUI.main_gui import Ui_MainWindow
 import pymongo
-
 
 class MainWindow(Ui_MainWindow):
     def __init__(self):
@@ -27,5 +26,6 @@ if __name__ == "__main__":
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
+    ui.label_3.setPixmap(QtGui.QPixmap("main_app/src/img/rssIcon.png"))
     MainWindow.show()
     sys.exit(app.exec_())

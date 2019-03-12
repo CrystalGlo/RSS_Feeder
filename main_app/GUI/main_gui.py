@@ -8,6 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from main_app.GUI.add_rss_gui import Ui_AddRssWindow
+from main_app.src.rssController import RssController
 
 class Ui_MainWindow(object):
     def openAddRssWindow(self):
@@ -66,13 +67,15 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.tableWidget = QtWidgets.QTableWidget(self.frame_table)
         self.tableWidget.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.tableWidget.setStyleSheet("selection-background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 170, 0, 255), stop:1 rgba(255, 255, 255, 255));")
+        self.tableWidget.setStyleSheet("selection-background-color: rgb(255, 170, 0);")
         self.tableWidget.setFrameShape(QtWidgets.QFrame.Panel)
         self.tableWidget.setAlternatingRowColors(True)
         self.tableWidget.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
         self.tableWidget.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.tableWidget.setGridStyle(QtCore.Qt.DotLine)
-        self.tableWidget.setRowCount(10)
+        rssController = RssController()
+        docsCount = rssController.getDocumentsCount()
+        self.tableWidget.setRowCount(docsCount)
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setObjectName("tableWidget")
         item = QtWidgets.QTableWidgetItem()
@@ -167,6 +170,13 @@ class Ui_MainWindow(object):
         __sortingEnabled = self.tableWidget.isSortingEnabled()
         self.tableWidget.setSortingEnabled(True)
         self.tableWidget.setSortingEnabled(__sortingEnabled)
+        rssController = RssController()
+        dataList = rssController.getAllExistingData()
+        for i in range(0, len(dataList)):
+            self.tableWidget.setItem(i, 0, QtWidgets.QTableWidgetItem(dataList[i]['news_title']))
+            self.tableWidget.setItem(i, 1, QtWidgets.QTableWidgetItem(dataList[i]['rss_address']))
+            self.tableWidget.setItem(i, 2, QtWidgets.QTableWidgetItem(dataList[i]['news_date']))
+
         self.textBrowser_details.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
