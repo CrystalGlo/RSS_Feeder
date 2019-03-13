@@ -16,9 +16,11 @@ class Ui_AddRssWindow(object):
         rssCategory = self.category_comboBox.currentText()
         updateFreq = self.update_frequency_comboBox.currentText()
         # Get and Save Rss entries
-        rssController = RssController()
-        save = rssController.getAndSaveRssEntries
-        save(rssAddress, rssCategory, updateFreq)
+        if rssAddress.strip() != "":
+            rssController = RssController()
+            save = rssController.getAndSaveRssEntries
+            save(rssAddress, rssCategory, updateFreq)
+            self.btn_cancel_add.click()
 
     def setupUi(self, AddRssWindow):
         AddRssWindow.setObjectName("AddRssWindow")
