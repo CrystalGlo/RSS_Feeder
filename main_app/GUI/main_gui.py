@@ -16,6 +16,13 @@ class Ui_MainWindow(object):
         self.ui = Ui_AddRssWindow()
         self.ui.setupUi(self.window)
         self.window.show()
+        if self.ui.btn_submit_add.isChecked:
+            rssController = RssController()
+            dataList = rssController.getAllExistingData()
+            for i in range(0, len(dataList)):
+                self.tableWidget.setItem(i, 0, QtWidgets.QTableWidgetItem(dataList[i]['news_title']))
+                self.tableWidget.setItem(i, 1, QtWidgets.QTableWidgetItem(dataList[i]['rss_address']))
+                self.tableWidget.setItem(i, 2, QtWidgets.QTableWidgetItem(str(dataList[i]['news_date'])))
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -175,7 +182,7 @@ class Ui_MainWindow(object):
         for i in range(0, len(dataList)):
             self.tableWidget.setItem(i, 0, QtWidgets.QTableWidgetItem(dataList[i]['news_title']))
             self.tableWidget.setItem(i, 1, QtWidgets.QTableWidgetItem(dataList[i]['rss_address']))
-            self.tableWidget.setItem(i, 2, QtWidgets.QTableWidgetItem(dataList[i]['news_date']))
+            self.tableWidget.setItem(i, 2, QtWidgets.QTableWidgetItem(str(dataList[i]['news_date'])))
 
         self.textBrowser_details.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
@@ -185,6 +192,7 @@ class Ui_MainWindow(object):
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:xx-large; font-weight:600;\"><br /></p></body></html>"))
         self.menuBtns.setTitle(_translate("MainWindow", "Gestion des flux RSS"))
         self.actionBtn_subscribe.setText(_translate("MainWindow", "S\'abonner à un flux RSS"))
+        self.actionBtn_subscribe.setChecked(False)
         self.actionBtn_unsubscribe.setText(_translate("MainWindow", "Se désabonner d\'un flux RSS"))
         self.actionBtn_delete.setText(_translate("MainWindow", "Supprimer un flux RSS"))
 

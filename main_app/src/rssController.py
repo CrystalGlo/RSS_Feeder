@@ -1,3 +1,4 @@
+import dateparser as dateparser
 import pymongo
 import feedparser
 
@@ -15,7 +16,7 @@ class RssController(object):
             self.rssCollection.insert_many(
                 [{"rss_address": rssAddress, "rss_category": rssCategory, "update_freq": updateFreq,
                   "news_title": feeds.entries[i]['title'], "news_link": feeds.entries[i]['link'],
-                  "news_summary": feeds.entries[i]['summary'], "news_date": feeds.entries[i]['published']}])
+                  "news_summary": feeds.entries[i]['summary'], "news_date": dateparser.parse(feeds.entries[i]['published'])}])
         # Delete the first empty row used to create rssCollection
         self.rssCollection.delete_many({"rss_address": ""})
 

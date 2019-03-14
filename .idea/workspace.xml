@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b6a94509-63ec-40f6-963c-ba78e3c9416f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_app/GUI/add_rss_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/GUI/add_rss_gui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/GUI/main_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/GUI/main_gui.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main_app/src/rssController.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/src/rssController.py" afterDir="false" />
     </list>
     <ignored path=".idea/" />
@@ -15,7 +15,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/RSS_Feeder$rssController.coverage" NAME="rssController Coverage Results" MODIFIED="1552337510508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/src" />
-    <SUITE FILE_PATH="coverage/RSS_Feeder$main.coverage" NAME="main Coverage Results" MODIFIED="1552508396220" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$main.coverage" NAME="main Coverage Results" MODIFIED="1552535379397" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$main_gui.coverage" NAME="main_gui Coverage Results" MODIFIED="1552357642868" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/GUI" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$rss_controller.coverage" NAME="rss_controller Coverage Results" MODIFIED="1551049315774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/src" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$rss_gui.coverage" NAME="rss_gui Coverage Results" MODIFIED="1551640520870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/GUI" />
@@ -59,10 +59,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_app/src/rssController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="68" lean-forward="true" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
+            <state>
               <folding>
-                <element signature="e#0#14#0" expanded="true" />
+                <element signature="e#0#31#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,8 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_app/GUI/main_gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="77" column="24" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="24" />
+            <state relative-caret-position="228">
+              <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
               <folding>
                 <element signature="n#!!doc" />
                 <element signature="e#197#239#0" expanded="true" />
@@ -82,10 +81,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_app/GUI/add_rss_gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="19" column="50" lean-forward="true" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
+            <state relative-caret-position="272">
+              <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
               <folding>
                 <element signature="n#!!doc" />
                 <element signature="e#199#209#0" expanded="true" />
@@ -121,11 +129,12 @@
       <find>MainWindow</find>
       <find>details</find>
       <find>pi</find>
-      <find>openAddRssWindow</find>
       <find>table</find>
       <find>background-color</find>
       <find>pixmap</find>
       <find>cancel</find>
+      <find>openAddRssWindow</find>
+      <find>checked</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -146,10 +155,11 @@
         <option value="$PROJECT_DIR$/main_app/test/test_create_rss_db.py" />
         <option value="$PROJECT_DIR$/main_app/test_create_rss_db.py" />
         <option value="$PROJECT_DIR$/main_app/test/unit/test_create_rss_db.py" />
-        <option value="$PROJECT_DIR$/main_app/GUI/main_gui.py" />
         <option value="$PROJECT_DIR$/main_app/main.py" />
-        <option value="$PROJECT_DIR$/main_app/GUI/add_rss_gui.py" />
         <option value="$PROJECT_DIR$/main_app/src/rssController.py" />
+        <option value="$PROJECT_DIR$/main_app/GUI/add_rss_gui.py" />
+        <option value="$PROJECT_DIR$/main_app/GUI/main_gui.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -167,7 +177,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -199,42 +208,17 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RSS_Feeder" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RSS_Feeder" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="Lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RSS_Feeder" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="Lib" type="462c0819:PsiDirectoryNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RSS_Feeder" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="Lib" type="462c0819:PsiDirectoryNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-              <item name="pyqt5_tools" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/main_app/test/unit" />
-    <property name="settings.editor.selected.configurable" value="preferences.mongoOptions" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="PyCoverageOptionsProvider">
     <option name="myUseBundledCoveragePy" value="true" />
@@ -391,7 +375,9 @@
       <workItem from="1551897165191" duration="554000" />
       <workItem from="1552327898349" duration="18871000" />
       <workItem from="1552426492326" duration="13000" />
-      <workItem from="1552504709164" duration="2752000" />
+      <workItem from="1552504709164" duration="4233000" />
+      <workItem from="1552530370879" duration="5925000" />
+      <workItem from="1552538709855" duration="326000" />
     </task>
     <servers />
   </component>
@@ -428,13 +414,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89350000" />
+    <option name="totallyTimeSpent" value="97082000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.2624811" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.1785174" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -454,7 +440,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32980332" />
-      <window_info anchor="right" id="Mongo Explorer" order="4" sideWeight="0.4967742" weight="0.15582451" />
+      <window_info anchor="right" id="Mongo Explorer" order="4" sideWeight="0.4967742" visible="true" weight="0.1580938" />
       <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="right" id="Coverage" order="6" sideWeight="0.5032258" side_tool="true" weight="0.15582451" />
     </layout>
@@ -504,6 +490,7 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/GUI/test.py" />
     <entry file="file://$PROJECT_DIR$/main_app/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -521,6 +508,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/src/rssController.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/GUI/add_rss_gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+          <folding>
+            <element signature="n#!!doc" />
+            <element signature="e#199#209#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main_app/test/unit/test_rssController.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -530,8 +537,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main_app/GUI/main_gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="77" column="24" selection-start-line="77" selection-start-column="13" selection-end-line="77" selection-end-column="24" />
+        <state relative-caret-position="228">
+          <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
           <folding>
             <element signature="n#!!doc" />
             <element signature="e#197#239#0" expanded="true" />
@@ -539,31 +546,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/GUI/test.py">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="26" column="71" lean-forward="true" selection-start-line="26" selection-start-column="71" selection-end-line="26" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/src/rssController.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="68" lean-forward="true" selection-start-line="20" selection-start-column="68" selection-end-line="20" selection-end-column="68" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/GUI/add_rss_gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="19" column="50" lean-forward="true" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
-          <folding>
-            <element signature="n#!!doc" />
-            <element signature="e#199#209#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
         </state>
       </provider>
     </entry>
