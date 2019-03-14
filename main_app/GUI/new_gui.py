@@ -7,26 +7,8 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from main_app.GUI.add_rss_gui import Ui_AddRssWindow
-from main_app.src.rssController import RssController
 
 class Ui_MainWindow(object):
-    def openAddRssWindow(self):
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_AddRssWindow()
-        self.ui.setupUi(self.window)
-        self.window.show()
-
-    def updateData(self):
-        rssController = RssController()
-        docsCount = rssController.getDocumentsCount()
-        self.tableWidget.setRowCount(docsCount)
-        dataList = rssController.getAllExistingData()
-        for i in range(0, len(dataList)):
-            self.tableWidget.setItem(i, 0, QtWidgets.QTableWidgetItem(dataList[i]['news_title']))
-            self.tableWidget.setItem(i, 1, QtWidgets.QTableWidgetItem(dataList[i]['rss_address']))
-            self.tableWidget.setItem(i, 2, QtWidgets.QTableWidgetItem(str(dataList[i]['news_date'])))
-
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(874, 487)
@@ -54,7 +36,6 @@ class Ui_MainWindow(object):
         self.label_3.setPixmap(QtGui.QPixmap("../src/img/rssIcon.png"))
         self.label_3.setObjectName("label_3")
         self.horizontalLayout.addWidget(self.label_3)
-
         self.btn_update = QtWidgets.QPushButton(self.frame_search)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
@@ -68,8 +49,6 @@ class Ui_MainWindow(object):
         self.btn_update.setIconSize(QtCore.QSize(30, 22))
         self.btn_update.setObjectName("btn_update")
         self.horizontalLayout.addWidget(self.btn_update)
-        self.btn_update.clicked.connect(self.updateData)
-
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -92,18 +71,23 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.frame_table)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.tableWidget = QtWidgets.QTableWidget(self.frame_table)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(50)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
+        self.tableWidget.setSizePolicy(sizePolicy)
         self.tableWidget.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-
-        self.tableWidget.setStyleSheet("selection-background-color: rgb(255, 170, 0);")
+        self.tableWidget.setStyleSheet("selection-background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 170, 0, 255), stop:1 rgba(255, 255, 255, 255));")
         self.tableWidget.setFrameShape(QtWidgets.QFrame.Panel)
+        self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.tableWidget.setProperty("showDropIndicator", False)
+        self.tableWidget.setDragDropOverwriteMode(False)
         self.tableWidget.setAlternatingRowColors(True)
         self.tableWidget.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
         self.tableWidget.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.tableWidget.setGridStyle(QtCore.Qt.DotLine)
-        rssController = RssController()
-        docsCount = rssController.getDocumentsCount()
-        self.tableWidget.setRowCount(docsCount)
+        self.tableWidget.setCornerButtonEnabled(False)
+        self.tableWidget.setRowCount(10)
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setObjectName("tableWidget")
         item = QtWidgets.QTableWidgetItem()
@@ -169,7 +153,6 @@ class Ui_MainWindow(object):
         MainWindow.setMenuBar(self.menubar)
         self.actionBtn_subscribe = QtWidgets.QAction(MainWindow)
         self.actionBtn_subscribe.setObjectName("actionBtn_subscribe")
-        self.actionBtn_subscribe.triggered.connect(self.openAddRssWindow)
         self.actionBtn_unsubscribe = QtWidgets.QAction(MainWindow)
         self.actionBtn_unsubscribe.setObjectName("actionBtn_unsubscribe")
         self.actionBtn_delete = QtWidgets.QAction(MainWindow)
@@ -189,6 +172,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "RSS Feeder"))
         self.label_2.setText(_translate("MainWindow", "Liste des bulletins de nouvelles"))
         self.label.setText(_translate("MainWindow", "Rechercher"))
+        self.tableWidget.setSortingEnabled(True)
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Titre"))
         item = self.tableWidget.horizontalHeaderItem(1)
@@ -196,16 +180,8 @@ class Ui_MainWindow(object):
         item = self.tableWidget.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "Date"))
         __sortingEnabled = self.tableWidget.isSortingEnabled()
-        self.tableWidget.setSortingEnabled(True)
+        self.tableWidget.setSortingEnabled(False)
         self.tableWidget.setSortingEnabled(__sortingEnabled)
-        # self.updateData()
-        rssController = RssController()
-        dataList = rssController.getAllExistingData()
-        for i in range(0, len(dataList)):
-            self.tableWidget.setItem(i, 0, QtWidgets.QTableWidgetItem(dataList[i]['news_title']))
-            self.tableWidget.setItem(i, 1, QtWidgets.QTableWidgetItem(dataList[i]['rss_address']))
-            self.tableWidget.setItem(i, 2, QtWidgets.QTableWidgetItem(str(dataList[i]['news_date'])))
-
         self.textBrowser_details.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -214,7 +190,6 @@ class Ui_MainWindow(object):
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:xx-large; font-weight:600;\"><br /></p></body></html>"))
         self.menuBtns.setTitle(_translate("MainWindow", "Gestion des flux RSS"))
         self.actionBtn_subscribe.setText(_translate("MainWindow", "S\'abonner à un flux RSS"))
-        self.actionBtn_subscribe.setChecked(False)
         self.actionBtn_unsubscribe.setText(_translate("MainWindow", "Se désabonner d\'un flux RSS"))
         self.actionBtn_delete.setText(_translate("MainWindow", "Supprimer un flux RSS"))
 
@@ -222,7 +197,6 @@ class Ui_MainWindow(object):
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    app.setStyle('Fusion')
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)

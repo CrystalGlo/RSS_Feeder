@@ -4,8 +4,9 @@ from main_app.GUI.main_gui import Ui_MainWindow
 import pymongo
 
 class MainWindow(Ui_MainWindow):
-    def __init__(self):
-        self.main_ui = Ui_MainWindow()
+    def __init__(self, dialog):
+        Ui_MainWindow.__init__(self)
+        self.setupUi(dialog)
 
 def create_rss_db():
     client = pymongo.MongoClient()
@@ -26,6 +27,9 @@ if __name__ == "__main__":
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
-    ui.label_3.setPixmap(QtGui.QPixmap("main_app/src/img/rssIcon.png"))
+    ui.label_3.setPixmap(QtGui.QPixmap("src/img/rssIcon.png"))
+    icon = QtGui.QIcon()
+    icon.addPixmap(QtGui.QPixmap("src/img/refresh_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+    ui.btn_update.setIcon(icon)
     MainWindow.show()
     sys.exit(app.exec_())

@@ -22,6 +22,7 @@ class Ui_AddRssWindow(object):
             save(rssAddress, rssCategory, updateFreq)
             self.btn_cancel_add.click()
 
+
     def setupUi(self, AddRssWindow):
         AddRssWindow.setObjectName("AddRssWindow")
         AddRssWindow.resize(452, 218)
