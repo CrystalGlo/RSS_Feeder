@@ -7,8 +7,16 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from main_app.src.rssController import RssController
 
 class Ui_SearchWindow(object):
+    def submitSearch(self):
+        companyName = self.companyName_lineEdit.text()
+        keyWord = self.keyWord_lineEdit.text()
+        rssController = RssController()
+        rssController.searchNews(companyName, keyWord)
+
+
     def setupUi(self, SearchWindow):
         SearchWindow.setObjectName("SearchWindow")
         SearchWindow.resize(525, 321)
@@ -74,12 +82,14 @@ class Ui_SearchWindow(object):
         self.frame_3.setFrameShape(QtWidgets.QFrame.Panel)
         self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_3.setObjectName("frame_3")
-        self.pushButton = QtWidgets.QPushButton(self.frame_3)
-        self.pushButton.setGeometry(QtCore.QRect(110, 10, 101, 31))
-        self.pushButton.setObjectName("pushButton")
-        self.pushButton_2 = QtWidgets.QPushButton(self.frame_3)
-        self.pushButton_2.setGeometry(QtCore.QRect(310, 10, 101, 31))
-        self.pushButton_2.setObjectName("pushButton_2")
+        self.search_btn = QtWidgets.QPushButton(self.frame_3)
+        self.search_btn.setGeometry(QtCore.QRect(110, 10, 101, 31))
+        self.search_btn.setObjectName("search_btn")
+        self.search_btn.clicked.connect(self.submitSearch)
+        self.cancel_btn = QtWidgets.QPushButton(self.frame_3)
+        self.cancel_btn.setGeometry(QtCore.QRect(310, 10, 101, 31))
+        self.cancel_btn.setObjectName("cancel_btn")
+        self.cancel_btn.clicked.connect(SearchWindow.close)
         self.gridLayout_3.addWidget(self.frame_3, 1, 0, 1, 1)
         SearchWindow.setCentralWidget(self.centralwidget)
 
@@ -91,8 +101,8 @@ class Ui_SearchWindow(object):
         SearchWindow.setWindowTitle(_translate("SearchWindow", "Recherche de bulletins de nouvelles"))
         self.label_2.setText(_translate("SearchWindow", "Nom d\'entreprise : "))
         self.label_3.setText(_translate("SearchWindow", "Mot clé :"))
-        self.pushButton.setText(_translate("SearchWindow", "Chercher"))
-        self.pushButton_2.setText(_translate("SearchWindow", "Annuler"))
+        self.search_btn.setText(_translate("SearchWindow", "Chercher"))
+        self.cancel_btn.setText(_translate("SearchWindow", "Annuler"))
 
 
 if __name__ == "__main__":

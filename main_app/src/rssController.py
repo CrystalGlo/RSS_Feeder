@@ -13,10 +13,6 @@ class RssController(object):
     def getAndSaveRssEntries(self, rssAddress, rssCategory, updateFreq):
         # Read entries from RSS feeds
         feeds = feedparser.parse(rssAddress)
-        # # store the etag and modified
-        # last_etag = feeds.etag
-        # last_modified = feeds.modified
-        # feeds = feedparser.parse(rssAddress, etag=last_etag, modified=last_modified)
         # Save entries data to rssDB
         for i in range(1, len(feeds.entries)):
             self.rssCollection.insert_many(
@@ -40,12 +36,15 @@ class RssController(object):
                 updateFreq = document["update_freq"]
                 title = document["news_title"]
                 titlesList.append(title)
-
             duplicatedTitles = [item for item, count in collections.Counter(titlesList).items() if count > 1]
             # get and save updated entries
             getAndSaveRssEntries(self, rssAddress, rssCategory, updateFreq)
             for i in range(0, len(duplicatedTitles)):
                 self.rssCollection.delete_one({"news_title": duplicatedTitles[i]})
+
+    def searchNews(self, companyName, keyWord):
+        print(companyName)
+        print(keyWord)
 
     def deleteDuplicatedNews(self):
         rssAddressList = self.rssCollection.distinct("rss_address")
