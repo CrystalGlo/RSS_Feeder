@@ -8,6 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from main_app.GUI.add_rss_gui import Ui_AddRssWindow
+from main_app.GUI.search_gui import Ui_SearchWindow
 from main_app.src.rssController import RssController
 
 class Ui_MainWindow(object):
@@ -17,8 +18,15 @@ class Ui_MainWindow(object):
         self.ui.setupUi(self.window)
         self.window.show()
 
+    def openSearchGui(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_SearchWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
     def updateData(self):
         rssController = RssController()
+        rssController.updateRssEntries()
         docsCount = rssController.getDocumentsCount()
         self.tableWidget.setRowCount(docsCount)
         dataList = rssController.getAllExistingData()
@@ -74,13 +82,16 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addItem(spacerItem)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
-        self.label = QtWidgets.QLabel(self.frame_search)
-        self.label.setObjectName("label")
-        self.horizontalLayout.addWidget(self.label)
-        self.lineEdit_search = QtWidgets.QLineEdit(self.frame_search)
-        self.lineEdit_search.setStyleSheet("selection-background-color: rgb(255, 170, 0);")
-        self.lineEdit_search.setObjectName("lineEdit_search")
-        self.horizontalLayout.addWidget(self.lineEdit_search)
+
+        self.btn_search = QtWidgets.QPushButton(self.frame_search)
+        self.btn_search.setStyleSheet("font: 75 bold 10pt \"Arial\";")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("../src/img/search_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_search.setIcon(icon1)
+        self.btn_search.setObjectName("btn_search")
+        self.horizontalLayout.addWidget(self.btn_search)
+        self.btn_search.clicked.connect(self.openSearchGui)
+
         self.gridLayout_search.addWidget(self.frame_search, 0, 0, 1, 1, QtCore.Qt.AlignTop)
         self.gridLayout.addLayout(self.gridLayout_search, 0, 0, 1, 1)
         self.gridLayout_table = QtWidgets.QGridLayout()
@@ -101,6 +112,7 @@ class Ui_MainWindow(object):
         self.tableWidget.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
         self.tableWidget.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.tableWidget.setGridStyle(QtCore.Qt.DotLine)
+
         rssController = RssController()
         docsCount = rssController.getDocumentsCount()
         self.tableWidget.setRowCount(docsCount)
@@ -188,7 +200,8 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "RSS Feeder"))
         self.label_2.setText(_translate("MainWindow", "Liste des bulletins de nouvelles"))
-        self.label.setText(_translate("MainWindow", "Rechercher"))
+        self.btn_search.setText(_translate("MainWindow", "Rechercher"))
+
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Titre"))
         item = self.tableWidget.horizontalHeaderItem(1)
@@ -198,13 +211,11 @@ class Ui_MainWindow(object):
         __sortingEnabled = self.tableWidget.isSortingEnabled()
         self.tableWidget.setSortingEnabled(True)
         self.tableWidget.setSortingEnabled(__sortingEnabled)
-        # self.updateData()
-        rssController = RssController()
-        dataList = rssController.getAllExistingData()
-        for i in range(0, len(dataList)):
-            self.tableWidget.setItem(i, 0, QtWidgets.QTableWidgetItem(dataList[i]['news_title']))
-            self.tableWidget.setItem(i, 1, QtWidgets.QTableWidgetItem(dataList[i]['rss_address']))
-            self.tableWidget.setItem(i, 2, QtWidgets.QTableWidgetItem(str(dataList[i]['news_date'])))
+        self.updateData()
+        self.tableWidget.resizeColumnsToContents()
+        self.tableWidget.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
+        #self.tableWidget.horizontalHeader().setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
+        self.tableWidget.horizontalHeader().setStretchLastSection(True)
 
         self.textBrowser_details.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"

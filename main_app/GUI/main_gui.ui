@@ -108,16 +108,20 @@
           </spacer>
          </item>
          <item>
-          <widget class="QLabel" name="label">
+          <widget class="QPushButton" name="btn_search">
            <property name="text">
             <string>Rechercher</string>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>../src/img/search_icon.png</normaloff>../src/img/search_icon.png</iconset>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_search">
-           <property name="styleSheet">
-            <string notr="true">selection-background-color: rgb(255, 170, 0);</string>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string/>
            </property>
           </widget>
          </item>
