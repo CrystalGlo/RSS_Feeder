@@ -132,6 +132,12 @@
     </item>
     <item row="1" column="0">
      <layout class="QGridLayout" name="gridLayout_table">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetDefaultConstraint</enum>
+      </property>
+      <property name="spacing">
+       <number>6</number>
+      </property>
       <item row="0" column="0">
        <widget class="QFrame" name="frame_table">
         <property name="frameShape">
@@ -258,6 +264,90 @@
            </item>
           </widget>
          </item>
+         <item>
+          <layout class="QGridLayout" name="gridLayout_search_collapse">
+           <property name="spacing">
+            <number>1</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QFrame" name="frame_search_collapse">
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">selection-background-color: rgb(255, 170, 0);
+font: 75 Bold 10pt &quot;Arial&quot;;</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Panel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QFormLayout" name="formLayout">
+              <property name="sizeConstraint">
+               <enum>QLayout::SetMaximumSize</enum>
+              </property>
+              <property name="labelAlignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="formAlignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_4">
+                <property name="styleSheet">
+                 <string notr="true">selection-background-color: rgb(255, 170, 0);</string>
+                </property>
+                <property name="text">
+                 <string>Nom de l'entreprise :</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QLineEdit" name="companyName_lineEdit"/>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="label_5">
+                <property name="text">
+                 <string>Mot clé :</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QLineEdit" name="keyWord_lineEdit"/>
+              </item>
+              <item row="4" column="0">
+               <widget class="QPushButton" name="submitSearch_btn">
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="text">
+                 <string>Chercher</string>
+                </property>
+                <property name="autoDefault">
+                 <bool>false</bool>
+                </property>
+                <property name="default">
+                 <bool>false</bool>
+                </property>
+                <property name="flat">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QPushButton" name="cancelSearch_btn">
+                <property name="text">
+                 <string>Annuler</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </item>
         </layout>
        </widget>
       </item>
@@ -282,7 +372,7 @@
            <x>0</x>
            <y>0</y>
            <width>852</width>
-           <height>188</height>
+           <height>181</height>
           </rect>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
