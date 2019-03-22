@@ -7,6 +7,11 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import sys
+from PyQt5.QtCore import *
+from PyQt5.QtWebEngineWidgets import *
+from PyQt5.QtWidgets import QApplication
+
 from main_app.GUI.add_rss_gui import Ui_AddRssWindow
 from main_app.src.rssController import RssController
 
@@ -49,6 +54,14 @@ class Ui_MainWindow(object):
     def cancelSearch(self):
         self.companyName_lineEdit.setText("")
         self.keyWord_lineEdit.setText("")
+
+    def getSelectedTitle(self):
+        title = ""
+        selectedRow = self.tableWidget.currentRow()
+        if selectedRow >= 0:
+            title = self.tableWidget.item(selectedRow, 0).text()
+
+        return title
 
     def updateData(self):
         rssController = RssController()
@@ -109,6 +122,12 @@ class Ui_MainWindow(object):
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
 
+        self.btn_details = QtWidgets.QPushButton(self.frame_search)
+        self.btn_details.setStyleSheet("font: 75 bold 10pt \"Arial\";")
+        self.btn_details.setObjectName("btn_details")
+        self.horizontalLayout.addWidget(self.btn_details)
+        self.btn_details.clicked.connect(self.getSelectedTitle)
+
         self.btn_search = QtWidgets.QPushButton(self.frame_search)
         self.btn_search.setStyleSheet("font: 75 bold 10pt \"Arial\";")
         icon1 = QtGui.QIcon()
@@ -137,11 +156,8 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
         self.tableWidget.setSizePolicy(sizePolicy)
-
         self.tableWidget.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
-
-
         self.tableWidget.setStyleSheet("selection-background-color: rgb(255, 170, 0);")
         self.tableWidget.setFrameShape(QtWidgets.QFrame.Panel)
         self.tableWidget.setAlternatingRowColors(True)
@@ -154,6 +170,7 @@ class Ui_MainWindow(object):
         self.tableWidget.setRowCount(docsCount)
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setObjectName("tableWidget")
+
         item = QtWidgets.QTableWidgetItem()
         font = QtGui.QFont()
         font.setFamily("Arial")
@@ -233,24 +250,6 @@ class Ui_MainWindow(object):
         self.gridLayout_search_collapse.addWidget(self.frame_search_collapse, 0, 0, 1, 1)
         self.horizontalLayout_2.addLayout(self.gridLayout_search_collapse)
 
-        self.gridLayout_details = QtWidgets.QGridLayout()
-        self.gridLayout_details.setObjectName("gridLayout_details")
-        self.scrollArea_details = QtWidgets.QScrollArea(self.centralwidget)
-        self.scrollArea_details.setFrameShape(QtWidgets.QFrame.Panel)
-        self.scrollArea_details.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.scrollArea_details.setWidgetResizable(True)
-        self.scrollArea_details.setObjectName("scrollArea_details")
-        self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 852, 188))
-        self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.scrollAreaWidgetContents)
-        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.textBrowser_details = QtWidgets.QTextBrowser(self.scrollAreaWidgetContents)
-        self.textBrowser_details.setObjectName("textBrowser_details")
-        self.horizontalLayout_3.addWidget(self.textBrowser_details)
-        self.scrollArea_details.setWidget(self.scrollAreaWidgetContents)
-        self.gridLayout_details.addWidget(self.scrollArea_details, 0, 0, 1, 1)
-        self.gridLayout.addLayout(self.gridLayout_details, 2, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 874, 22))
@@ -274,7 +273,6 @@ class Ui_MainWindow(object):
         self.menuBtns.addSeparator()
         self.menuBtns.addAction(self.actionBtn_delete)
         self.menubar.addAction(self.menuBtns.menuAction())
-
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -283,6 +281,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "RSS Feeder"))
         self.label_2.setText(_translate("MainWindow", "Liste des bulletins de nouvelles"))
         self.btn_search.setText(_translate("MainWindow", "Rechercher"))
+        self.btn_details.setText(_translate("MainWindow", "Afficher les détails"))
 
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Titre"))
@@ -293,6 +292,7 @@ class Ui_MainWindow(object):
         __sortingEnabled = self.tableWidget.isSortingEnabled()
         self.tableWidget.setSortingEnabled(True)
         self.tableWidget.setSortingEnabled(__sortingEnabled)
+
         self.updateData()
         self.tableWidget.resizeColumnsToContents()
         self.tableWidget.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
@@ -304,18 +304,14 @@ class Ui_MainWindow(object):
         self.submitSearch_btn.setText(_translate("MainWindow", "Chercher"))
         self.cancelSearch_btn.setText(_translate("MainWindow", "Annuler"))
 
-        self.textBrowser_details.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'Arial\'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:18px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:medium; font-weight:600;\">Détails de la nouvelle sélectionnée</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:xx-large; font-weight:600;\"><br /></p></body></html>"))
         self.menuBtns.setTitle(_translate("MainWindow", "Gestion des flux RSS"))
         self.actionBtn_subscribe.setText(_translate("MainWindow", "S\'abonner à un flux RSS"))
         self.actionBtn_subscribe.setChecked(False)
         self.actionBtn_unsubscribe.setText(_translate("MainWindow", "Se désabonner d\'un flux RSS"))
         self.actionBtn_delete.setText(_translate("MainWindow", "Supprimer un flux RSS"))
 
+
+getSelectedTitle = Ui_MainWindow.getSelectedTitle
 
 if __name__ == "__main__":
     import sys

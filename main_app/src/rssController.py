@@ -1,8 +1,9 @@
 import collections
-
 import dateparser as dateparser
 import pymongo
 import feedparser
+import requests
+from urllib.error import URLError
 
 class RssController(object):
     # Connect to rssDB
@@ -41,6 +42,13 @@ class RssController(object):
             getAndSaveRssEntries(self, rssAddress, rssCategory, updateFreq)
             for i in range(0, len(duplicatedTitles)):
                 self.rssCollection.delete_one({"news_title": duplicatedTitles[i]})
+
+    def getSelectedNewsLink(self, selectedTitle):
+        newsLink = ""
+        cursor = self.rssCollection.find({"news_title": selectedTitle}, {"_id":0, "news_link":1})
+        for document in cursor:
+            newsLink = document["news_link"]
+        return newsLink
 
     def searchNews(self, companyName, keyWord):
         cursorList = []
@@ -123,3 +131,4 @@ getAllExistingData = RssController.getAllExistingData
 getDocumentsCount = RssController.getDocumentsCount
 updateRssEntries = RssController.updateRssEntries
 deleteDuplicatedNews = RssController.deleteDuplicatedNews
+getSelectedNewsLink = RssController.getSelectedNewsLink
