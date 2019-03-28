@@ -7,16 +7,15 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-import sys
 from PyQt5.QtCore import *
 from PyQt5.QtWebEngineWidgets import *
-from PyQt5.QtWidgets import QApplication
 
 from main_app.GUI.add_rss_gui import Ui_AddRssWindow
 from main_app.src.rssController import RssController
 
 class Ui_MainWindow(object):
     def __init__(self):
+        self.rssController = RssController()
         self.searchAreaVisible = False
 
     def showSearchArea(self):
@@ -36,9 +35,7 @@ class Ui_MainWindow(object):
     def submitSearch(self):
         companyName = self.companyName_lineEdit.text().strip()
         keyWord = self.keyWord_lineEdit.text()
-        rssController = RssController()
-        print(keyWord)
-        cursorList = rssController.searchNews(companyName, keyWord)
+        cursorList = self.rssController.searchNews(companyName, keyWord)
         if len(cursorList) == 0:
             print("Liste des curseurs est vide!")
         i = 0
@@ -54,21 +51,27 @@ class Ui_MainWindow(object):
     def cancelSearch(self):
         self.companyName_lineEdit.setText("")
         self.keyWord_lineEdit.setText("")
+        self.updateData()
 
     def getSelectedTitle(self):
         title = ""
         selectedRow = self.tableWidget.currentRow()
         if selectedRow >= 0:
             title = self.tableWidget.item(selectedRow, 0).text()
-
         return title
 
+    def showSelectedNewsContent(self):
+        title = self.getSelectedTitle()
+        link = self.rssController.getSelectedNewsLink(title)
+        self.detailsView.load(QUrl(link))
+        self.detailsView.setWindowTitle(title)
+        self.detailsView.show()
+
     def updateData(self):
-        rssController = RssController()
-        rssController.updateRssEntries()
-        docsCount = rssController.getDocumentsCount()
+        self.rssController.updateRssEntries()
+        docsCount = self.rssController.getDocumentsCount()
         self.tableWidget.setRowCount(docsCount)
-        dataList = rssController.getAllExistingData()
+        dataList = self.rssController.getAllExistingData()
         for i in range(0, len(dataList)):
             self.tableWidget.setItem(i, 0, QtWidgets.QTableWidgetItem(dataList[i]['news_title']))
             self.tableWidget.setItem(i, 1, QtWidgets.QTableWidgetItem(dataList[i]['rss_address']))
@@ -82,6 +85,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setMaximumSize(QtCore.QSize(2000, 2000))
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
+        self.detailsView = QWebEngineView()
         self.gridLayout.setObjectName("gridLayout")
         self.gridLayout_search = QtWidgets.QGridLayout()
         self.gridLayout_search.setObjectName("gridLayout_search")
@@ -98,7 +102,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.label_2)
         self.label_3 = QtWidgets.QLabel(self.frame_search)
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("../src/img/rssIcon.png"))
+        self.label_3.setPixmap(QtGui.QPixmap("img/rssIcon.png"))
         self.label_3.setObjectName("label_3")
         self.horizontalLayout.addWidget(self.label_3)
 
@@ -110,7 +114,7 @@ class Ui_MainWindow(object):
         self.btn_update.setSizePolicy(sizePolicy)
         self.btn_update.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../src/img/refresh_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("img/refresh_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btn_update.setIcon(icon)
         self.btn_update.setIconSize(QtCore.QSize(30, 22))
         self.btn_update.setObjectName("btn_update")
@@ -126,12 +130,12 @@ class Ui_MainWindow(object):
         self.btn_details.setStyleSheet("font: 75 bold 10pt \"Arial\";")
         self.btn_details.setObjectName("btn_details")
         self.horizontalLayout.addWidget(self.btn_details)
-        self.btn_details.clicked.connect(self.getSelectedTitle)
+        self.btn_details.clicked.connect(self.showSelectedNewsContent)
 
         self.btn_search = QtWidgets.QPushButton(self.frame_search)
         self.btn_search.setStyleSheet("font: 75 bold 10pt \"Arial\";")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../src/img/search_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("img/search_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btn_search.setIcon(icon1)
         self.btn_search.setObjectName("btn_search")
         self.horizontalLayout.addWidget(self.btn_search)
@@ -165,8 +169,7 @@ class Ui_MainWindow(object):
         self.tableWidget.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.tableWidget.setGridStyle(QtCore.Qt.DotLine)
 
-        rssController = RssController()
-        docsCount = rssController.getDocumentsCount()
+        docsCount = self.rssController.getDocumentsCount()
         self.tableWidget.setRowCount(docsCount)
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setObjectName("tableWidget")
@@ -296,7 +299,6 @@ class Ui_MainWindow(object):
         self.updateData()
         self.tableWidget.resizeColumnsToContents()
         self.tableWidget.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
-        #self.tableWidget.horizontalHeader().setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeToContents)
         self.tableWidget.horizontalHeader().setStretchLastSection(True)
 
         self.label_4.setText(_translate("MainWindow", "Nom d\'entreprise :"))
@@ -309,17 +311,3 @@ class Ui_MainWindow(object):
         self.actionBtn_subscribe.setChecked(False)
         self.actionBtn_unsubscribe.setText(_translate("MainWindow", "Se désabonner d\'un flux RSS"))
         self.actionBtn_delete.setText(_translate("MainWindow", "Supprimer un flux RSS"))
-
-
-getSelectedTitle = Ui_MainWindow.getSelectedTitle
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    app.setStyle('Fusion')
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
-
