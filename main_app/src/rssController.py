@@ -2,8 +2,6 @@ import collections
 import dateparser as dateparser
 import pymongo
 import feedparser
-import requests
-from urllib.error import URLError
 
 class RssController(object):
     # Connect to rssDB
@@ -12,7 +10,7 @@ class RssController(object):
     rssCollection = rssDB.get_collection("rss_collection")
 
     def getAndSaveRssEntries(self, rssAddress, rssCategory, updateFreq):
-        # Read entries from RSS feeds
+        # Read entries from RSS address
         feeds = feedparser.parse(rssAddress)
         # Save entries data to rssDB
         for i in range(1, len(feeds.entries)):
@@ -22,26 +20,31 @@ class RssController(object):
                   "news_summary": feeds.entries[i]['summary'], "news_date": dateparser.parse(feeds.entries[i]['published'])}])
         # Delete the first empty row used to create rssCollection
         self.rssCollection.delete_many({"rss_address": ""})
-        deleteDuplicatedNews(self)
+        deleteDuplicatedNews(self, rssAddress)
 
     def updateRssEntries(self):
         rssAddressList = self.rssCollection.distinct("rss_address")
         rssCategory = ""
         updateFreq = ""
-        titlesList = []
         for rssAddress in rssAddressList:
-            cursor = self.rssCollection.find({"rss_address": rssAddress}, {"_id":0, "rss_category":1, "update_freq":1,
-                                                                           "news_title":1})
+            cursor = self.rssCollection.find({"rss_address": rssAddress}, {"_id":0, "rss_category":1, "update_freq":1})
             for document in cursor:
                 rssCategory = document["rss_category"]
                 updateFreq = document["update_freq"]
-                title = document["news_title"]
-                titlesList.append(title)
-            duplicatedTitles = [item for item, count in collections.Counter(titlesList).items() if count > 1]
             # get and save updated entries
             getAndSaveRssEntries(self, rssAddress, rssCategory, updateFreq)
-            for i in range(0, len(duplicatedTitles)):
-                self.rssCollection.delete_one({"news_title": duplicatedTitles[i]})
+
+    def deleteDuplicatedNews(self, rssAddress):
+        titlesList = []
+        cursor = self.rssCollection.find({"rss_address": rssAddress}, {"news_title": 1})
+        for document in cursor:
+            title = document["news_title"]
+            titlesList.append(title)
+        # get duplicated titles in a list
+        duplicatedTitles = [item for item, count in collections.Counter(titlesList).items() if count > 1]
+        # delete the duplicated news
+        for i in range(0, len(duplicatedTitles)):
+            self.rssCollection.delete_one({"news_title": duplicatedTitles[i]})
 
     def getSelectedNewsLink(self, selectedTitle):
         newsLink = ""
@@ -52,7 +55,6 @@ class RssController(object):
 
     def searchNews(self, companyName, keyWord):
         cursorList = []
-        # self.rssCollection.create_index({ "$**": "text" })
         if companyName != "" and keyWord == "":
             cursor1 = self.rssCollection.find({"rss_address": {"$regex": companyName, "$options":"i"}}, {"_id":0})
             if cursor1.count() > 0:
@@ -98,19 +100,6 @@ class RssController(object):
                 cursorList.append(cursor11)
         print(len(cursorList))
         return cursorList
-
-    def deleteDuplicatedNews(self):
-        rssAddressList = self.rssCollection.distinct("rss_address")
-        titlesList = []
-        for rssAddress in rssAddressList:
-            cursor = self.rssCollection.find({"rss_address": rssAddress}, {"news_title": 1})
-            for document in cursor:
-                title = document["news_title"]
-                titlesList.append(title)
-
-            duplicatedTitles = [item for item, count in collections.Counter(titlesList).items() if count > 1]
-            for i in range(0, len(duplicatedTitles)):
-                self.rssCollection.delete_one({"news_title": duplicatedTitles[i]})
 
     def getAllExistingData(self):
         documents = []
