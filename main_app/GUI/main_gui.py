@@ -35,18 +35,20 @@ class Ui_MainWindow(object):
     def submitSearch(self):
         companyName = self.companyName_lineEdit.text().strip()
         keyWord = self.keyWord_lineEdit.text()
-        cursorList = self.rssController.searchNews(companyName, keyWord)
-        if len(cursorList) == 0:
+        searchCursorList = self.rssController.searchNews(companyName, keyWord)
+        if len(searchCursorList) == 0:
+            self.tableWidget.setRowCount(0)
             print("Liste des curseurs est vide!")
-        i = 0
-        self.tableWidget.setRowCount(0)
-        for cursor in cursorList:
-            for document in cursor:
-                self.tableWidget.setRowCount(i+1)
-                self.tableWidget.setItem(i, 0, QtWidgets.QTableWidgetItem(document['news_title']))
-                self.tableWidget.setItem(i, 1, QtWidgets.QTableWidgetItem(document['rss_address']))
-                self.tableWidget.setItem(i, 2, QtWidgets.QTableWidgetItem(str(document['news_date'])))
-                i = i+1
+        else:
+            i = 0
+            self.tableWidget.setRowCount(0)
+            for cursor in searchCursorList:
+                for document in cursor:
+                    self.tableWidget.setRowCount(i+1)
+                    self.tableWidget.setItem(i, 0, QtWidgets.QTableWidgetItem(document['news_title']))
+                    self.tableWidget.setItem(i, 1, QtWidgets.QTableWidgetItem(document['rss_address']))
+                    self.tableWidget.setItem(i, 2, QtWidgets.QTableWidgetItem(str(document['news_date'])))
+                    i = i+1
 
     def cancelSearch(self):
         self.companyName_lineEdit.setText("")

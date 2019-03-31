@@ -4,10 +4,11 @@ import pymongo
 import feedparser
 
 class RssController(object):
-    # Connect to rssDB
-    client = pymongo.MongoClient()
-    rssDB = client.get_database("rssDB")
-    rssCollection = rssDB.get_collection("rss_collection")
+    def __init__(self):
+        # Connect to rssDB
+        client = pymongo.MongoClient()
+        rssDB = client.get_database("rssDB")
+        self.rssCollection = rssDB.get_collection("rss_collection")
 
     def getAndSaveRssEntries(self, rssAddress, rssCategory, updateFreq):
         # Read entries from RSS address
@@ -59,47 +60,56 @@ class RssController(object):
             cursor1 = self.rssCollection.find({"rss_address": {"$regex": companyName, "$options":"i"}}, {"_id":0})
             if cursor1.count() > 0:
                 cursorList.append(cursor1)
-
         elif companyName == "" and keyWord != "":
-            cursor2 = self.rssCollection.find({{"rss_category": {"$regex": keyWord, "$options": "i"}}, {"_id": 0}})
+            cursor2 = self.rssCollection.find({"rss_category": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
             if cursor2.count() > 0:
                 cursorList.append(cursor2)
-            cursor3 = self.rssCollection.find({{"news_title": {"$regex": keyWord, "$options": "i"}}, {"_id": 0}})
+            cursor3 = self.rssCollection.find({"news_title": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
             if cursor3.count() > 0:
                 cursorList.append(cursor3)
-            cursor4 = self.rssCollection.find({{"news_link": {"$regex": keyWord, "$options": "i"}}, {"_id": 0}})
+            cursor4 = self.rssCollection.find({"news_link": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
             if cursor4.count() > 0:
                 cursorList.append(cursor4)
-            cursor5 = self.rssCollection.find({{"news_summary": {"$regex": keyWord, "$options": "i"}}, {"_id": 0}})
+            cursor5 = self.rssCollection.find({"news_summary": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
             if cursor5.count() > 0:
                 cursorList.append(cursor5)
-            cursor6 = self.rssCollection.find({{"news_date": {"$regex": keyWord, "$options": "i"}}, {"_id": 0}})
+            cursor6 = self.rssCollection.find({"news_date": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
             if cursor6.count() > 0:
                 cursorList.append(cursor6)
 
         elif companyName != "" and keyWord != "":
-            cursor7 = self.rssCollection.find({{"rss_address": {"$regex": companyName, "$options":"i"},
-                                                "rss_category": {"$regex": keyWord, "$options": "i"}}, {"_id": 0}})
+            cursor7 = self.rssCollection.find({"rss_address": {"$regex": companyName, "$options":"i"},
+                                                "rss_category": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
             if cursor7.count() > 0:
                 cursorList.append(cursor7)
-            cursor8 = self.rssCollection.find({{"rss_address": {"$regex": companyName, "$options":"i"},
-                                                "news_title": {"$regex": keyWord, "$options": "i"}}, {"_id": 0}})
+            cursor8 = self.rssCollection.find({"rss_address": {"$regex": companyName, "$options":"i"},
+                                                "news_title": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
             if cursor8.count() > 0:
                 cursorList.append(cursor8)
-            cursor9 = self.rssCollection.find({{"rss_address": {"$regex": companyName, "$options":"i"},
-                                                "news_link": {"$regex": keyWord, "$options": "i"}}, {"_id": 0}})
+            cursor9 = self.rssCollection.find({"rss_address": {"$regex": companyName, "$options":"i"},
+                                                "news_link": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
             if cursor9.count() > 0:
                 cursorList.append(cursor9)
-            cursor10 = self.rssCollection.find({{"rss_address": {"$regex": companyName, "$options":"i"},
-                                                "news_summary": {"$regex": keyWord, "$options": "i"}}, {"_id": 0}})
+            cursor10 = self.rssCollection.find({"rss_address": {"$regex": companyName, "$options":"i"},
+                                                "news_summary": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
             if cursor10.count() > 0:
                 cursorList.append(cursor10)
-            cursor11 = self.rssCollection.find({{"rss_address": {"$regex": companyName, "$options":"i"},
-                                                "news_date": {"$regex": keyWord, "$options": "i"}}, {"_id": 0}})
+            cursor11 = self.rssCollection.find({"rss_address": {"$regex": companyName, "$options":"i"},
+                                                "news_date": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
             if cursor11.count() > 0:
                 cursorList.append(cursor11)
-        print(len(cursorList))
-        return cursorList
+        searchCursorList = []
+        newsTitleList = []
+        for cursor in cursorList:
+            for document in cursor:
+                newsTitle = document["news_title"]
+                if newsTitle not in newsTitleList:
+                    newsTitleList.append(newsTitle)
+        for i in range(0, len(newsTitleList)):
+            searchCursor = self.rssCollection.find({"news_title": str(newsTitleList[i])}, {"_id": 0})
+            searchCursorList.append(searchCursor)
+
+        return searchCursorList
 
     def getAllExistingData(self):
         documents = []
