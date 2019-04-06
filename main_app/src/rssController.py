@@ -21,7 +21,7 @@ class RssController(object):
                   "news_summary": feeds.entries[i]['summary'], "news_date": dateparser.parse(feeds.entries[i]['published'])}])
         # Delete the first empty row used to create rssCollection
         self.rssCollection.delete_many({"rss_address": ""})
-        deleteDuplicatedNews(self, rssAddress)
+        self.deleteDuplicatedNews(rssAddress)
 
     def updateRssEntries(self):
         rssAddressList = self.rssCollection.distinct("rss_address")
@@ -33,7 +33,7 @@ class RssController(object):
                 rssCategory = document["rss_category"]
                 updateFreq = document["update_freq"]
             # get and save updated entries
-            getAndSaveRssEntries(self, rssAddress, rssCategory, updateFreq)
+            self.getAndSaveRssEntries(rssAddress, rssCategory, updateFreq)
 
     def deleteDuplicatedNews(self, rssAddress):
         titlesList = []
@@ -54,63 +54,6 @@ class RssController(object):
             newsLink = document["news_link"]
         return newsLink
 
-    def searchNews(self, companyName, keyWord):
-        cursorList = []
-        if companyName != "" and keyWord == "":
-            cursor1 = self.rssCollection.find({"rss_address": {"$regex": companyName, "$options":"i"}}, {"_id":0})
-            if cursor1.count() > 0:
-                cursorList.append(cursor1)
-        elif companyName == "" and keyWord != "":
-            cursor2 = self.rssCollection.find({"rss_category": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
-            if cursor2.count() > 0:
-                cursorList.append(cursor2)
-            cursor3 = self.rssCollection.find({"news_title": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
-            if cursor3.count() > 0:
-                cursorList.append(cursor3)
-            cursor4 = self.rssCollection.find({"news_link": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
-            if cursor4.count() > 0:
-                cursorList.append(cursor4)
-            cursor5 = self.rssCollection.find({"news_summary": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
-            if cursor5.count() > 0:
-                cursorList.append(cursor5)
-            cursor6 = self.rssCollection.find({"news_date": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
-            if cursor6.count() > 0:
-                cursorList.append(cursor6)
-
-        elif companyName != "" and keyWord != "":
-            cursor7 = self.rssCollection.find({"rss_address": {"$regex": companyName, "$options":"i"},
-                                                "rss_category": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
-            if cursor7.count() > 0:
-                cursorList.append(cursor7)
-            cursor8 = self.rssCollection.find({"rss_address": {"$regex": companyName, "$options":"i"},
-                                                "news_title": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
-            if cursor8.count() > 0:
-                cursorList.append(cursor8)
-            cursor9 = self.rssCollection.find({"rss_address": {"$regex": companyName, "$options":"i"},
-                                                "news_link": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
-            if cursor9.count() > 0:
-                cursorList.append(cursor9)
-            cursor10 = self.rssCollection.find({"rss_address": {"$regex": companyName, "$options":"i"},
-                                                "news_summary": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
-            if cursor10.count() > 0:
-                cursorList.append(cursor10)
-            cursor11 = self.rssCollection.find({"rss_address": {"$regex": companyName, "$options":"i"},
-                                                "news_date": {"$regex": keyWord, "$options": "i"}}, {"_id": 0})
-            if cursor11.count() > 0:
-                cursorList.append(cursor11)
-        searchCursorList = []
-        newsTitleList = []
-        for cursor in cursorList:
-            for document in cursor:
-                newsTitle = document["news_title"]
-                if newsTitle not in newsTitleList:
-                    newsTitleList.append(newsTitle)
-        for i in range(0, len(newsTitleList)):
-            searchCursor = self.rssCollection.find({"news_title": str(newsTitleList[i])}, {"_id": 0})
-            searchCursorList.append(searchCursor)
-
-        return searchCursorList
-
     def getAllExistingData(self):
         documents = []
         self.rssCollection.delete_many({"rss_address": ""})
@@ -125,9 +68,47 @@ class RssController(object):
         docsCount = self.rssCollection.count_documents({})
         return docsCount
 
-getAndSaveRssEntries = RssController.getAndSaveRssEntries
-getAllExistingData = RssController.getAllExistingData
-getDocumentsCount = RssController.getDocumentsCount
-updateRssEntries = RssController.updateRssEntries
-deleteDuplicatedNews = RssController.deleteDuplicatedNews
-getSelectedNewsLink = RssController.getSelectedNewsLink
+    def searchNews(self, searchWord):
+        cursorList = []
+        cursor1 = self.rssCollection.find({"rss_address": {"$regex": searchWord, "$options":"i"}}, {"_id":0})
+        if cursor1.count() > 0:
+            cursorList.append(cursor1)
+        cursor2 = self.rssCollection.find({"news_title": {"$regex": searchWord, "$options": "i"}}, {"_id":0})
+        if cursor2.count() > 0:
+            cursorList.append(cursor2)
+        cursor3 = self.rssCollection.find({"news_link": {"$regex": searchWord, "$options": "i"}}, {"_id":0})
+        if cursor3.count() > 0:
+            cursorList.append(cursor3)
+        cursor4 = self.rssCollection.find({"news_summary": {"$regex": searchWord, "$options": "i"}}, {"_id":0})
+        if cursor4.count() > 0:
+            cursorList.append(cursor4)
+        # Delete duplicated news
+        searchCursorList = self.deleteDuplicatedSearchedNews(cursorList)
+
+        return searchCursorList
+
+    def serachNewsByTitle(self, title):
+        cursor = self.rssCollection.find({"news_title": title})
+        return cursor
+
+    def deleteDuplicatedSearchedNews(self, cursorList):
+        unduplicatedCursorList = []
+        newsTitlesList = []
+        for cursor in cursorList:
+            for document in cursor:
+                newsTitle = document["news_title"]
+                if newsTitle not in newsTitlesList:
+                    newsTitlesList.append(newsTitle)
+        for i in range(0, len(newsTitlesList)):
+            searchCursor = self.rssCollection.find({"news_title": str(newsTitlesList[i])})
+            unduplicatedCursorList.append(searchCursor)
+
+        return unduplicatedCursorList
+
+    def getNewsTitles(self, cursorList):
+        newsTitlesList = []
+        for cursor in cursorList:
+            for document in cursor:
+                title = document["news_title"]
+                newsTitlesList.append(title)
+        return newsTitlesList

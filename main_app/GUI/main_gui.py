@@ -34,21 +34,48 @@ class Ui_MainWindow(object):
 
     def submitSearch(self):
         companyName = self.companyName_lineEdit.text().strip()
-        keyWord = self.keyWord_lineEdit.text()
-        searchCursorList = self.rssController.searchNews(companyName, keyWord)
+        keyWord = self.keyWord_lineEdit.text().strip()
+        finalCursorList = []
+        # Call searchNews function with a non empty attribute
+        if companyName != "" and keyWord == "":
+            finalCursorList = self.rssController.searchNews(companyName)
+        elif companyName == "" and keyWord != "":
+            finalCursorList = self.rssController.searchNews(keyWord)
+        elif companyName != "" and keyWord != "":
+            finalCursorList = self.findCompanyNameAndKeyWordNews(companyName, keyWord)
+        self.label_searchCount.setText(str(len(finalCursorList))+ " nouvelles trouvées")
+        self.setSearchTable(finalCursorList)
+
+    def findCompanyNameAndKeyWordNews(self, companyName, keyWord):
+        searchCursorList = []
+        companyNameAndKeyWordNewsTitles = []
+        companyNameCursorList = self.rssController.searchNews(companyName)
+        keyWordCursorList = self.rssController.searchNews(keyWord)
+        companyNameNewsTitles = self.rssController.getNewsTitles(companyNameCursorList)
+        keyWordNewsTitles = self.rssController.getNewsTitles(keyWordCursorList)
+        for cnTitle in companyNameNewsTitles:
+            for kwTitle in keyWordNewsTitles:
+                if cnTitle == kwTitle and cnTitle not in companyNameAndKeyWordNewsTitles:
+                    companyNameAndKeyWordNewsTitles.append(cnTitle)
+        for title in companyNameAndKeyWordNewsTitles:
+            cursor = self.rssController.serachNewsByTitle(title)
+            searchCursorList.append(cursor)
+
+        return searchCursorList
+
+    def setSearchTable(self, searchCursorList):
         if len(searchCursorList) == 0:
             self.tableWidget.setRowCount(0)
-            print("Liste des curseurs est vide!")
         else:
             i = 0
             self.tableWidget.setRowCount(0)
             for cursor in searchCursorList:
                 for document in cursor:
-                    self.tableWidget.setRowCount(i+1)
+                    self.tableWidget.setRowCount(i + 1)
                     self.tableWidget.setItem(i, 0, QtWidgets.QTableWidgetItem(document['news_title']))
                     self.tableWidget.setItem(i, 1, QtWidgets.QTableWidgetItem(document['rss_address']))
                     self.tableWidget.setItem(i, 2, QtWidgets.QTableWidgetItem(str(document['news_date'])))
-                    i = i+1
+                    i = i + 1
 
     def cancelSearch(self):
         self.companyName_lineEdit.setText("")
@@ -226,20 +253,24 @@ class Ui_MainWindow(object):
         self.formLayout.setLabelAlignment(QtCore.Qt.AlignCenter)
         self.formLayout.setFormAlignment(QtCore.Qt.AlignCenter)
         self.formLayout.setObjectName("formLayout")
+        self.label_searchCount = QtWidgets.QLabel(self.frame_search_collapse)
+        self.label_searchCount.setStyleSheet("color: green;\n""font: 75 10pt \"Arial\";")
+        self.label_searchCount.setObjectName("label_searchCount")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_searchCount)
         self.label_4 = QtWidgets.QLabel(self.frame_search_collapse)
         self.label_4.setStyleSheet("selection-background-color: rgb(255, 170, 0);\n""font: 75 Bold 10pt \"Arial\";")
         self.label_4.setObjectName("label_4")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_4)
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_4)
         self.companyName_lineEdit = QtWidgets.QLineEdit(self.frame_search_collapse)
         self.companyName_lineEdit.setObjectName("companyName_lineEdit")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.companyName_lineEdit)
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.companyName_lineEdit)
         self.label_5 = QtWidgets.QLabel(self.frame_search_collapse)
         self.label_5.setStyleSheet("selection-background-color: rgb(255, 170, 0);\n""font: 75 Bold 10pt \"Arial\";")
         self.label_5.setObjectName("label_5")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_5)
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_5)
         self.keyWord_lineEdit = QtWidgets.QLineEdit(self.frame_search_collapse)
         self.keyWord_lineEdit.setObjectName("keyWord_lineEdit")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.keyWord_lineEdit)
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.keyWord_lineEdit)
         self.submitSearch_btn = QtWidgets.QPushButton(self.frame_search_collapse)
         self.submitSearch_btn.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.submitSearch_btn.setAutoDefault(False)
@@ -247,11 +278,11 @@ class Ui_MainWindow(object):
         self.submitSearch_btn.setFlat(False)
         self.submitSearch_btn.setObjectName("submitSearch_btn")
         self.submitSearch_btn.clicked.connect(self.submitSearch)
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.submitSearch_btn)
+        self.formLayout.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.submitSearch_btn)
         self.cancelSearch_btn = QtWidgets.QPushButton(self.frame_search_collapse)
         self.cancelSearch_btn.setObjectName("cancelSearch_btn")
         self.cancelSearch_btn.clicked.connect(self.cancelSearch)
-        self.formLayout.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.cancelSearch_btn)
+        self.formLayout.setWidget(6, QtWidgets.QFormLayout.LabelRole, self.cancelSearch_btn)
         self.gridLayout_search_collapse.addWidget(self.frame_search_collapse, 0, 0, 1, 1)
         self.horizontalLayout_2.addLayout(self.gridLayout_search_collapse)
 
