@@ -11,7 +11,9 @@ from PyQt5.QtCore import *
 from PyQt5.QtWebEngineWidgets import *
 
 from main_app.GUI.add_rss_gui import Ui_AddRssWindow
+from main_app.src.htmlDelegate import HTMLDelegate, Widget
 from main_app.src.rssController import RssController
+
 
 class Ui_MainWindow(object):
     def __init__(self):
@@ -114,11 +116,17 @@ class Ui_MainWindow(object):
         self.updateData()
 
     def submitOccurrence(self):
+        # background-color: rgb(255, 170, 0);
         self.clearSearchLineEdits()
         occurrenceWord = self.lineEdit_occurrence.text().strip()
         cursorList = self.rssController.searchNews(occurrenceWord)
         self.label_occurrenceCount.setText(occurrenceWord + " trouvé dans \n"+ str(len(cursorList)) + " nouvelles")
         self.setSearchTable(cursorList)
+        # Highlight occurrence
+        allItems = self.tableWidget.findItems("", QtCore.Qt.MatchContains)
+        selected_items = self.tableWidget.findItems(occurrenceWord, QtCore.Qt.MatchContains)
+        for item in allItems:
+            item.setData(QtCore.Qt.UserRole, occurrenceWord if item in selected_items else None)
 
     def clearSearchLineEdits(self):
         self.keyWord_lineEdit.setText("")
@@ -268,6 +276,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.tableWidget)
         self.gridLayout_table.addWidget(self.frame_table, 0, 0, 1, 1)
         self.gridLayout.addLayout(self.gridLayout_table, 1, 0, 1, 1)
+        # Highlight occurrences
+        self.tableWidget.setItemDelegate(HTMLDelegate(self.tableWidget))
 
         # add collapse search Area
         self.gridLayout_search_collapse = QtWidgets.QGridLayout()
@@ -389,6 +399,7 @@ class Ui_MainWindow(object):
         self.tableWidget.resizeColumnsToContents()
         self.tableWidget.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
         self.tableWidget.horizontalHeader().setStretchLastSection(True)
+        self.tableWidget.setItemDelegate(HTMLDelegate(self.tableWidget))
 
         self.label_4.setText(_translate("MainWindow", "Nom d\'entreprise :"))
         self.label_5.setText(_translate("MainWindow", "Mot clé :"))
