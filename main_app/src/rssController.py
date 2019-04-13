@@ -28,7 +28,7 @@ class RssController(object):
         rssCategory = ""
         updateFreq = ""
         for rssAddress in rssAddressList:
-            cursor = self.rssCollection.find({"rss_address": rssAddress}, {"_id":0, "rss_category":1, "update_freq":1})
+            cursor = self.rssCollection.find({"rss_address": rssAddress}, {"_id":0, "rss_category":1, "update_freq":1}).sort("news_date", -1)
             for document in cursor:
                 rssCategory = document["rss_category"]
                 updateFreq = document["update_freq"]
@@ -37,7 +37,7 @@ class RssController(object):
 
     def deleteDuplicatedNews(self, rssAddress):
         titlesList = []
-        cursor = self.rssCollection.find({"rss_address": rssAddress}, {"news_title": 1})
+        cursor = self.rssCollection.find({"rss_address": rssAddress}, {"news_title": 1}).sort("news_date", -1)
         for document in cursor:
             title = document["news_title"]
             titlesList.append(title)
@@ -49,7 +49,7 @@ class RssController(object):
 
     def getSelectedNewsLink(self, selectedTitle):
         newsLink = ""
-        cursor = self.rssCollection.find({"news_title": selectedTitle}, {"_id":0, "news_link":1})
+        cursor = self.rssCollection.find({"news_title": selectedTitle}, {"_id":0, "news_link":1}).sort("news_date", -1)
         for document in cursor:
             newsLink = document["news_link"]
         return newsLink
@@ -57,7 +57,7 @@ class RssController(object):
     def getAllExistingData(self):
         documents = []
         self.rssCollection.delete_many({"rss_address": ""})
-        cursor = self.rssCollection.find({}, {"_id":0, "news_title":1, "rss_address":1, "news_date":1})
+        cursor = self.rssCollection.find({}, {"_id":0, "news_title":1, "rss_address":1, "news_date":1}).sort("news_date", -1)
         for document in cursor:
             documents.append(document)
 
@@ -70,16 +70,16 @@ class RssController(object):
 
     def searchNews(self, searchWord):
         cursorList = []
-        cursor1 = self.rssCollection.find({"rss_address": {"$regex": searchWord, "$options":"i"}}, {"_id":0})
+        cursor1 = self.rssCollection.find({"rss_address": {"$regex": searchWord, "$options":"i"}}, {"_id":0}).sort("news_date", -1)
         if cursor1.count() > 0:
             cursorList.append(cursor1)
-        cursor2 = self.rssCollection.find({"news_title": {"$regex": searchWord, "$options": "i"}}, {"_id":0})
+        cursor2 = self.rssCollection.find({"news_title": {"$regex": searchWord, "$options": "i"}}, {"_id":0}).sort("news_date", -1)
         if cursor2.count() > 0:
             cursorList.append(cursor2)
-        cursor3 = self.rssCollection.find({"news_link": {"$regex": searchWord, "$options": "i"}}, {"_id":0})
+        cursor3 = self.rssCollection.find({"news_link": {"$regex": searchWord, "$options": "i"}}, {"_id":0}).sort("news_date", -1)
         if cursor3.count() > 0:
             cursorList.append(cursor3)
-        cursor4 = self.rssCollection.find({"news_summary": {"$regex": searchWord, "$options": "i"}}, {"_id":0})
+        cursor4 = self.rssCollection.find({"news_summary": {"$regex": searchWord, "$options": "i"}}, {"_id":0}).sort("news_date", -1)
         if cursor4.count() > 0:
             cursorList.append(cursor4)
         # Delete duplicated news
@@ -87,8 +87,8 @@ class RssController(object):
 
         return searchCursorList
 
-    def serachNewsByTitle(self, title):
-        cursor = self.rssCollection.find({"news_title": title})
+    def searchNewsByTitle(self, title):
+        cursor = self.rssCollection.find({"news_title": title}).sort("news_date", -1)
         return cursor
 
     def deleteDuplicatedSearchedNews(self, cursorList):
@@ -100,7 +100,7 @@ class RssController(object):
                 if newsTitle not in newsTitlesList:
                     newsTitlesList.append(newsTitle)
         for i in range(0, len(newsTitlesList)):
-            searchCursor = self.rssCollection.find({"news_title": str(newsTitlesList[i])})
+            searchCursor = self.rssCollection.find({"news_title": str(newsTitlesList[i])}).sort("news_date", -1)
             unduplicatedCursorList.append(searchCursor)
 
         return unduplicatedCursorList

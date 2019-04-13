@@ -28,5 +28,8 @@ class MainWindow(Ui_MainWindow):
     icon2 = QtGui.QIcon()
     icon2.addPixmap(QtGui.QPixmap("GUI/img/search_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
     ui.btn_search.setIcon(icon2)
+    icon3 = QtGui.QIcon()
+    icon3.addPixmap(QtGui.QPixmap("GUI/img/occurrence_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+    ui.btn_occurrence.setIcon(icon3)
     MainWindow.show()
     sys.exit(app.exec_())
