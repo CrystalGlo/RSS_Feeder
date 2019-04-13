@@ -11,7 +11,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtWebEngineWidgets import *
 
 from main_app.GUI.add_rss_gui import Ui_AddRssWindow
-from main_app.src.htmlDelegate import HTMLDelegate, Widget
+from main_app.src.htmlDelegate import HTMLDelegate
 from main_app.src.rssController import RssController
 
 
@@ -116,13 +116,12 @@ class Ui_MainWindow(object):
         self.updateData()
 
     def submitOccurrence(self):
-        # background-color: rgb(255, 170, 0);
         self.clearSearchLineEdits()
         occurrenceWord = self.lineEdit_occurrence.text().strip()
         cursorList = self.rssController.searchNews(occurrenceWord)
         self.label_occurrenceCount.setText(occurrenceWord + " trouvé dans \n"+ str(len(cursorList)) + " nouvelles")
         self.setSearchTable(cursorList)
-        # Highlight occurrence
+        # Change occurrence font color
         allItems = self.tableWidget.findItems("", QtCore.Qt.MatchContains)
         selected_items = self.tableWidget.findItems(occurrenceWord, QtCore.Qt.MatchContains)
         for item in allItems:
@@ -224,6 +223,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.frame_table)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.tableWidget = QtWidgets.QTableWidget(self.frame_table)
+        # Highlight occurrences
+        self.tableWidget.setItemDelegate(HTMLDelegate(self.tableWidget))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(50)
         sizePolicy.setVerticalStretch(0)
@@ -276,8 +277,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.tableWidget)
         self.gridLayout_table.addWidget(self.frame_table, 0, 0, 1, 1)
         self.gridLayout.addLayout(self.gridLayout_table, 1, 0, 1, 1)
-        # Highlight occurrences
-        self.tableWidget.setItemDelegate(HTMLDelegate(self.tableWidget))
 
         # add collapse search Area
         self.gridLayout_search_collapse = QtWidgets.QGridLayout()
