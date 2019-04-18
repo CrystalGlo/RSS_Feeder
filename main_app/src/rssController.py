@@ -18,7 +18,8 @@ class RssController(object):
             self.rssCollection.insert_many(
                 [{"rss_address": rssAddress, "rss_category": rssCategory, "update_freq": updateFreq,
                   "news_title": feeds.entries[i]['title'], "news_link": feeds.entries[i]['link'],
-                  "news_summary": feeds.entries[i]['summary'], "news_date": dateparser.parse(feeds.entries[i]['published'])}])
+                  "news_summary": feeds.entries[i]['summary'], "news_date": dateparser.parse(feeds.entries[i]['published']),
+                  "is_subscribed": True}])
         # Delete the first empty row used to create rssCollection
         self.rssCollection.delete_many({"rss_address": ""})
         self.deleteDuplicatedNews(rssAddress)
@@ -28,7 +29,9 @@ class RssController(object):
         rssCategory = ""
         updateFreq = ""
         for rssAddress in rssAddressList:
-            cursor = self.rssCollection.find({"rss_address": rssAddress}, {"_id":0, "rss_category":1, "update_freq":1}).sort("news_date", -1)
+            cursor = self.rssCollection.find(
+                {"rss_address": rssAddress, "is_subscribed": True},
+                {"_id": 0, "rss_category": 1, "update_freq": 1}).sort("news_date", -1)
             for document in cursor:
                 rssCategory = document["rss_category"]
                 updateFreq = document["update_freq"]
@@ -54,6 +57,9 @@ class RssController(object):
             newsLink = document["news_link"]
         return newsLink
 
+    def unsubscribeRss(self, rssAddress):
+        self.rssCollection.update_many({"rss_address": rssAddress}, { "$set": {"is_subscribed": False}})
+
     def getAllExistingData(self):
         documents = []
         self.rssCollection.delete_many({"rss_address": ""})
@@ -62,6 +68,11 @@ class RssController(object):
             documents.append(document)
 
         return documents
+
+    def getAllRssAddresses(self):
+        rssAddressList = self.rssCollection.distinct("rss_address")
+
+        return rssAddressList
 
     def getDocumentsCount(self):
         self.rssCollection.delete_many({"rss_address": ""})

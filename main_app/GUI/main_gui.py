@@ -11,6 +11,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtWebEngineWidgets import *
 
 from main_app.GUI.add_rss_gui import Ui_AddRssWindow
+from main_app.GUI.unsubscribe_gui import Ui_UnsubscribeWindow
 from main_app.src.htmlDelegate import HTMLDelegate
 from main_app.src.rssController import RssController
 
@@ -31,6 +32,12 @@ class Ui_MainWindow(object):
     def openAddRssWindow(self):
         self.window = QtWidgets.QMainWindow()
         self.ui = Ui_AddRssWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def openUnsubscribeWindow(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_UnsubscribeWindow()
         self.ui.setupUi(self.window)
         self.window.show()
 
@@ -365,6 +372,7 @@ class Ui_MainWindow(object):
         self.actionBtn_subscribe.triggered.connect(self.openAddRssWindow)
         self.actionBtn_unsubscribe = QtWidgets.QAction(MainWindow)
         self.actionBtn_unsubscribe.setObjectName("actionBtn_unsubscribe")
+        self.actionBtn_unsubscribe.triggered.connect(self.openUnsubscribeWindow)
         self.actionBtn_delete = QtWidgets.QAction(MainWindow)
         self.actionBtn_delete.setObjectName("actionBtn_delete")
         self.menuBtns.addAction(self.actionBtn_subscribe)

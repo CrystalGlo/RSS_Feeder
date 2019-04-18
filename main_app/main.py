@@ -10,7 +10,7 @@ def create_rss_db():
         rssDB = client["rssDB"]
         rss_collection = rssDB["rss_collection"]
         rss_collection.insert_one({"rss_address": "", "rss_category": "", "update_freq": "", "news_title": "null title",
-                                "news_link": "", "news_summary": "", "news_date": ""})
+                                "news_link": "", "news_summary": "", "news_date": "", "is_subscribed": ""})
 
 class MainWindow(Ui_MainWindow):
     # create the rssDB if it does not exist
