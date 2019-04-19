@@ -60,6 +60,10 @@ class RssController(object):
     def unsubscribeRss(self, rssAddress):
         self.rssCollection.update_many({"rss_address": rssAddress}, { "$set": {"is_subscribed": False}})
 
+    def deleteRss(self, rssAddress):
+        self.rssCollection.delete_many({"rss_address": rssAddress})
+        self.updateRssEntries()
+
     def getAllExistingData(self):
         documents = []
         self.rssCollection.delete_many({"rss_address": ""})

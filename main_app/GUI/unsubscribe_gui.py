@@ -4,7 +4,6 @@ from main_app.src.rssController import RssController
 class Ui_UnsubscribeWindow(object):
     def submitUnsubscription(self):
         rssAddress = self.lineEdit_rssAddress.text().strip()
-        existingRssAddresses = []
         if rssAddress == "":
             self.label_error.setText("L'adresse RSS ne doit pas être vide.")
         else:
