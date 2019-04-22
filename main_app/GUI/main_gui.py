@@ -21,6 +21,9 @@ class Ui_MainWindow(object):
     def __init__(self):
         self.rssController = RssController()
         self.searchAreaVisible = False
+        self.rowsLoaded = 25
+        self.pageIndex = 1
+        self.startRow = 0
 
     def showSearchArea(self):
         if not self.searchAreaVisible:
@@ -54,14 +57,15 @@ class Ui_MainWindow(object):
         keyWord = self.keyWord_lineEdit.text().strip()
         finalCursorList = []
         # Call searchNews function with a non empty attribute
-        if companyName != "" and keyWord == "":
-            finalCursorList = self.rssController.searchNews(companyName)
-        elif companyName == "" and keyWord != "":
-            finalCursorList = self.rssController.searchNews(keyWord)
-        elif companyName != "" and keyWord != "":
-            finalCursorList = self.findCompanyNameAndKeyWordNews(companyName, keyWord)
-        self.label_searchCount.setText(str(len(finalCursorList))+ " nouvelles trouvées")
-        self.setSearchTable(finalCursorList)
+        if companyName != "" or keyWord != "":
+            if companyName != "" and keyWord == "":
+                finalCursorList = self.rssController.searchNews(companyName)
+            elif companyName == "" and keyWord != "":
+                finalCursorList = self.rssController.searchNews(keyWord)
+            elif companyName != "" and keyWord != "":
+                finalCursorList = self.findCompanyNameAndKeyWordNews(companyName, keyWord)
+            self.label_searchCount.setText(str(len(finalCursorList))+ " nouvelles trouvées")
+            self.setSearchTable(finalCursorList)
 
     def findCompanyNameAndKeyWordNews(self, companyName, keyWord):
         searchCursorList = []
@@ -123,6 +127,14 @@ class Ui_MainWindow(object):
             self.tableWidget.setItem(i, 0, QtWidgets.QTableWidgetItem(dataList[i]['news_title']))
             self.tableWidget.setItem(i, 1, QtWidgets.QTableWidgetItem(dataList[i]['rss_address']))
             self.tableWidget.setItem(i, 2, QtWidgets.QTableWidgetItem(str(dataList[i]['news_date'])))
+        # self.rowsLoaded = len(dataList) - self.rowsLoaded
+        # self.startRow += self.rowsLoaded
+
+    def loadPreviousPage(self):
+        return 0
+
+    def loadNextPage(self):
+        return 0
 
     def cancelOccurrence(self):
         self.clearOccurrenceLineEdit()
@@ -132,14 +144,15 @@ class Ui_MainWindow(object):
     def submitOccurrence(self):
         self.clearSearchLineEdits()
         occurrenceWord = self.lineEdit_occurrence.text().strip()
-        cursorList = self.rssController.searchNews(occurrenceWord)
-        self.label_occurrenceCount.setText(occurrenceWord + " trouvé dans \n"+ str(len(cursorList)) + " nouvelles")
-        self.setSearchTable(cursorList)
-        # Change occurrence font color
-        allItems = self.tableWidget.findItems("", QtCore.Qt.MatchContains)
-        selected_items = self.tableWidget.findItems(occurrenceWord, QtCore.Qt.MatchContains)
-        for item in allItems:
-            item.setData(QtCore.Qt.UserRole, occurrenceWord if item in selected_items else None)
+        if occurrenceWord != "":
+            cursorList = self.rssController.searchNews(occurrenceWord)
+            self.label_occurrenceCount.setText(occurrenceWord + " trouvé dans \n"+ str(len(cursorList)) + " nouvelles")
+            self.setSearchTable(cursorList)
+            # Change occurrence font color
+            allItems = self.tableWidget.findItems("", QtCore.Qt.MatchContains)
+            selected_items = self.tableWidget.findItems(occurrenceWord, QtCore.Qt.MatchContains)
+            for item in allItems:
+                item.setData(QtCore.Qt.UserRole, occurrenceWord if item in selected_items else None)
 
     def clearSearchLineEdits(self):
         self.keyWord_lineEdit.setText("")
@@ -173,19 +186,28 @@ class Ui_MainWindow(object):
         self.label_2.setStyleSheet("font: 75 bold italic 10pt \"Arial\";")
         self.label_2.setObjectName("label_2")
         self.horizontalLayout.addWidget(self.label_2)
-        self.label_3 = QtWidgets.QLabel(self.frame_search)
-        self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("img/rssIcon.png"))
-        self.label_3.setObjectName("label_3")
-        self.horizontalLayout.addWidget(self.label_3)
+        self.btn_prevpage = QtWidgets.QPushButton(self.frame_search)
+        icon_prev_page = QtGui.QIcon()
+        icon_prev_page.addPixmap(QtGui.QPixmap("img/previous_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_prevpage.setIcon(icon_prev_page)
+        self.btn_prevpage.setObjectName("btn_prevpage")
+        self.horizontalLayout.addWidget(self.btn_prevpage)
+        self.btn_prevpage.clicked.connect(self.loadPreviousPage)
+        self.label_4 = QtWidgets.QLabel(self.frame_search)
+        self.label_4.setText("page")
+        self.label_4.setObjectName("label_4")
+        self.horizontalLayout.addWidget(self.label_4)
+        self.btn_nextpage = QtWidgets.QPushButton(self.frame_search)
+        icon_next_page = QtGui.QIcon()
+        icon_next_page.addPixmap(QtGui.QPixmap("img/next_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btn_nextpage.setIcon(icon_next_page)
+        self.btn_nextpage.setObjectName("btn_nextpage")
+        self.horizontalLayout.addWidget(self.btn_nextpage)
+        self.btn_nextpage.clicked.connect(self.loadNextPage)
 
         self.btn_update = QtWidgets.QPushButton(self.frame_search)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Maximum)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.btn_update.sizePolicy().hasHeightForWidth())
-        self.btn_update.setSizePolicy(sizePolicy)
-        self.btn_update.setText("")
+        self.btn_update.setStyleSheet("font: 75 bold 10pt \"Arial\";")
+        self.btn_update.setText(" Actualiser")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("img/refresh_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btn_update.setIcon(icon)
@@ -364,6 +386,24 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_2.addLayout(self.gridLayout_search_collapse)
 
+        # RSS icon
+        self.gridLayout_picture = QtWidgets.QGridLayout()
+        self.gridLayout_picture.setObjectName("gridLayout_picture")
+        self.frame_picture = QtWidgets.QFrame(self.centralwidget)
+        # self.frame_picture.setFrameShape(QtWidgets.QFrame.Panel)
+        # self.frame_picture.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_picture.setObjectName("frame_picture")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame_picture)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.label_picture = QtWidgets.QLabel(self.frame_picture)
+        self.label_picture.setObjectName("label_picture")
+        self.label_picture.setText("")
+        rss_pic = QtGui.QPixmap("img/rss_logo2.png").scaled(657, 220)
+        self.label_picture.setPixmap(rss_pic)
+        self.horizontalLayout.addWidget(self.label_picture)
+        self.gridLayout_picture.addWidget(self.frame_picture, 0, 0, 1, 1, QtCore.Qt.AlignCenter)
+        self.gridLayout.addLayout(self.gridLayout_picture, 2, 0, 1, 1)
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 874, 22))
@@ -429,3 +469,13 @@ class Ui_MainWindow(object):
         self.actionBtn_subscribe.setChecked(False)
         self.actionBtn_unsubscribe.setText(_translate("MainWindow", "Se désabonner d\'un flux RSS"))
         self.actionBtn_delete.setText(_translate("MainWindow", "Supprimer un flux RSS"))
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    app.setStyle('Fusion')
+    UnsubscribeWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(UnsubscribeWindow)
+    UnsubscribeWindow.show()
+    sys.exit(app.exec_())
