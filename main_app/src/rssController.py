@@ -37,6 +37,7 @@ class RssController(object):
                 updateFreq = document["update_freq"]
             # get and save updated entries
             self.getAndSaveRssEntries(rssAddress, rssCategory, updateFreq)
+            print(rssAddress)
 
     def deleteDuplicatedNews(self, rssAddress):
         titlesList = []

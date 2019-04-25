@@ -1,15 +1,6 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'main_gui.ui'
-#
-# Created by: PyQt5 UI code generator 5.11.3
-#
-# WARNING! All changes made in this file will be lost!
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import *
 from PyQt5.QtWebEngineWidgets import *
-
 from main_app.GUI.add_rss_gui import Ui_AddRssWindow
 from main_app.GUI.unsubscribe_gui import Ui_UnsubscribeWindow
 from main_app.GUI.delete_gui import Ui_DeleteRssWindow
