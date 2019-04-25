@@ -21,10 +21,52 @@ class Ui_MainWindow(object):
     def __init__(self):
         self.rssController = RssController()
         self.searchAreaVisible = False
-        self.rowsLoaded = 25
         self.pageIndex = 1
-        self.startRow = 0
+        self.dataList = []
+        self.occurrenceWord = ""
 
+    # Add new RSS section
+    def openAddRssWindow(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_AddRssWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    def updateData(self):
+        self.occurrenceWord = ""
+        self.rssController.updateRssEntries()
+        self.dataList = self.rssController.getAllExistingData()
+        self.pageIndex = 1
+        self.btn_nextpage.setEnabled(True)
+        self.displayData(self.dataList, self.pageIndex)
+
+    def loadPreviousPage(self):
+        self.btn_nextpage.setEnabled(True)
+        self.pageIndex -= 1
+        self.displayData(self.dataList, self.pageIndex)
+
+    def loadNextPage(self):
+        self.btn_prevpage.setEnabled(True)
+        self.pageIndex += 1
+        self.displayData(self.dataList, self.pageIndex)
+
+    # Open selected news link in a server section
+    def showSelectedNewsContent(self):
+        title = self.getSelectedTitle()
+        if title != "":
+            link = self.rssController.getSelectedNewsLink(title)
+            self.detailsView.load(QUrl(link))
+            self.detailsView.setWindowTitle(title)
+            self.detailsView.show()
+
+    def getSelectedTitle(self):
+        title = ""
+        selectedRow = self.tableWidget.currentRow()
+        if selectedRow >= 0:
+            title = self.tableWidget.item(selectedRow, 0).text()
+        return title
+
+    # Search by company name and/or keyword
     def showSearchArea(self):
         if not self.searchAreaVisible:
             self.frame_search_collapse.show()
@@ -32,24 +74,6 @@ class Ui_MainWindow(object):
         else:
             self.frame_search_collapse.hide()
             self.searchAreaVisible = False
-
-    def openAddRssWindow(self):
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_AddRssWindow()
-        self.ui.setupUi(self.window)
-        self.window.show()
-
-    def openUnsubscribeWindow(self):
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_UnsubscribeWindow()
-        self.ui.setupUi(self.window)
-        self.window.show()
-
-    def openDeleteWindow(self):
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_DeleteRssWindow()
-        self.ui.setupUi(self.window)
-        self.window.show()
 
     def submitSearch(self):
         self.clearOccurrenceLineEdit()
@@ -89,70 +113,36 @@ class Ui_MainWindow(object):
         if len(searchCursorList) == 0:
             self.tableWidget.setRowCount(0)
         else:
-            i = 0
-            self.tableWidget.setRowCount(0)
+            self.pageIndex = 1
+            self.btn_nextpage.setEnabled(True)
+            documentList = []
             for cursor in searchCursorList:
                 for document in cursor:
-                    self.tableWidget.setRowCount(i + 1)
-                    self.tableWidget.setItem(i, 0, QtWidgets.QTableWidgetItem(document['news_title']))
-                    self.tableWidget.setItem(i, 1, QtWidgets.QTableWidgetItem(document['rss_address']))
-                    self.tableWidget.setItem(i, 2, QtWidgets.QTableWidgetItem(str(document['news_date'])))
-                    i = i + 1
+                    documentList.append(document)
+            self.dataList = documentList
+            self.displayData(self.dataList, self.pageIndex)
 
     def cancelSearch(self):
         self.clearSearchLineEdits()
         self.clearOccurrenceLineEdit()
         self.updateData()
 
-    def getSelectedTitle(self):
-        title = ""
-        selectedRow = self.tableWidget.currentRow()
-        if selectedRow >= 0:
-            title = self.tableWidget.item(selectedRow, 0).text()
-        return title
-
-    def showSelectedNewsContent(self):
-        title = self.getSelectedTitle()
-        link = self.rssController.getSelectedNewsLink(title)
-        self.detailsView.load(QUrl(link))
-        self.detailsView.setWindowTitle(title)
-        self.detailsView.show()
-
-    def updateData(self):
-        self.rssController.updateRssEntries()
-        docsCount = self.rssController.getDocumentsCount()
-        self.tableWidget.setRowCount(docsCount)
-        dataList = self.rssController.getAllExistingData()
-        for i in range(0, len(dataList)):
-            self.tableWidget.setItem(i, 0, QtWidgets.QTableWidgetItem(dataList[i]['news_title']))
-            self.tableWidget.setItem(i, 1, QtWidgets.QTableWidgetItem(dataList[i]['rss_address']))
-            self.tableWidget.setItem(i, 2, QtWidgets.QTableWidgetItem(str(dataList[i]['news_date'])))
-        # self.rowsLoaded = len(dataList) - self.rowsLoaded
-        # self.startRow += self.rowsLoaded
-
-    def loadPreviousPage(self):
-        return 0
-
-    def loadNextPage(self):
-        return 0
-
-    def cancelOccurrence(self):
-        self.clearOccurrenceLineEdit()
-        self.clearSearchLineEdits()
-        self.updateData()
-
+    # Show occurrence of company name section
     def submitOccurrence(self):
         self.clearSearchLineEdits()
-        occurrenceWord = self.lineEdit_occurrence.text().strip()
-        if occurrenceWord != "":
-            cursorList = self.rssController.searchNews(occurrenceWord)
-            self.label_occurrenceCount.setText(occurrenceWord + " trouvé dans \n"+ str(len(cursorList)) + " nouvelles")
+        self.occurrenceWord = self.lineEdit_occurrence.text().strip()
+        if self.occurrenceWord != "":
+            cursorList = self.rssController.searchNews(self.occurrenceWord)
+            self.label_occurrenceCount.setText(self.occurrenceWord + " trouvé dans \n"+ str(len(cursorList)) + " nouvelles")
             self.setSearchTable(cursorList)
             # Change occurrence font color
-            allItems = self.tableWidget.findItems("", QtCore.Qt.MatchContains)
-            selected_items = self.tableWidget.findItems(occurrenceWord, QtCore.Qt.MatchContains)
-            for item in allItems:
-                item.setData(QtCore.Qt.UserRole, occurrenceWord if item in selected_items else None)
+            self.colorOccurrence()
+
+    def colorOccurrence(self):
+        allItems = self.tableWidget.findItems("", QtCore.Qt.MatchContains)
+        selected_items = self.tableWidget.findItems(self.occurrenceWord, QtCore.Qt.MatchContains)
+        for item in allItems:
+            item.setData(QtCore.Qt.UserRole, self.occurrenceWord if item in selected_items else None)
 
     def clearSearchLineEdits(self):
         self.keyWord_lineEdit.setText("")
@@ -162,6 +152,53 @@ class Ui_MainWindow(object):
     def clearOccurrenceLineEdit(self):
         self.lineEdit_occurrence.setText("")
         self.label_occurrenceCount.setText("")
+
+    def cancelOccurrence(self):
+        self.clearOccurrenceLineEdit()
+        self.clearSearchLineEdits()
+        self.updateData()
+
+    # Common function of displaying data in the main table by pages
+    def displayData(self, dataList, pageIndex):
+        self.tableWidget.clearContents()
+        self.tableWidget.setRowCount(25)
+        if len(dataList) < 25:
+            pagesCount = 1
+        else:
+            pagesCount = round(len(dataList) / 25)
+        self.label_pagenbr.setText("page " + str(pageIndex) + "/" + str(pagesCount))
+        startIndex = (pageIndex - 1) * 25
+        if pageIndex == 1:
+            self.btn_prevpage.setEnabled(False)
+        if pageIndex < pagesCount:
+            lastIndex = startIndex + 25
+        if pageIndex == pagesCount:
+            self.btn_nextpage.setEnabled(False)
+            lastIndex = len(dataList)
+            self.tableWidget.setRowCount(lastIndex - startIndex)
+        j = 0
+        while j <= 25:
+            for i in range(startIndex, lastIndex):
+                self.tableWidget.setItem(j, 0, QtWidgets.QTableWidgetItem(dataList[i]['news_title']))
+                self.tableWidget.setItem(j, 1, QtWidgets.QTableWidgetItem(dataList[i]['rss_address']))
+                self.tableWidget.setItem(j, 2, QtWidgets.QTableWidgetItem(str(dataList[i]['news_date'])))
+                j += 1
+        if self.occurrenceWord != "":
+            self.colorOccurrence()
+
+    # Unsubscribe RSS section
+    def openUnsubscribeWindow(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_UnsubscribeWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
+    # Delete RSS section
+    def openDeleteWindow(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_DeleteRssWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -193,10 +230,10 @@ class Ui_MainWindow(object):
         self.btn_prevpage.setObjectName("btn_prevpage")
         self.horizontalLayout.addWidget(self.btn_prevpage)
         self.btn_prevpage.clicked.connect(self.loadPreviousPage)
-        self.label_4 = QtWidgets.QLabel(self.frame_search)
-        self.label_4.setText("page")
-        self.label_4.setObjectName("label_4")
-        self.horizontalLayout.addWidget(self.label_4)
+        self.label_pagenbr = QtWidgets.QLabel(self.frame_search)
+        self.label_pagenbr.setText("page")
+        self.label_pagenbr.setObjectName("label_pagenbr")
+        self.horizontalLayout.addWidget(self.label_pagenbr)
         self.btn_nextpage = QtWidgets.QPushButton(self.frame_search)
         icon_next_page = QtGui.QIcon()
         icon_next_page.addPixmap(QtGui.QPixmap("img/next_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -236,15 +273,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.btn_search)
         self.btn_search.clicked.connect(self.showSearchArea)
 
-        self.btn_occurrence = QtWidgets.QPushButton(self.frame_search)
-        self.btn_occurrence.setStyleSheet("font: 75 bold 10pt \"Arial\";")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("img/occurrence_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btn_occurrence.setIcon(icon1)
-        self.btn_occurrence.setObjectName("btn_occurrence")
-        self.horizontalLayout.addWidget(self.btn_occurrence)
-        self.btn_occurrence.clicked.connect(self.showSearchArea)
-
         self.gridLayout_search.addWidget(self.frame_search, 0, 0, 1, 1, QtCore.Qt.AlignTop)
         self.gridLayout.addLayout(self.gridLayout_search, 0, 0, 1, 1)
         self.gridLayout_table = QtWidgets.QGridLayout()
@@ -275,8 +303,7 @@ class Ui_MainWindow(object):
         self.tableWidget.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.tableWidget.setGridStyle(QtCore.Qt.DotLine)
 
-        docsCount = self.rssController.getDocumentsCount()
-        self.tableWidget.setRowCount(docsCount)
+        self.tableWidget.setRowCount(25)
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setObjectName("tableWidget")
 
@@ -383,7 +410,6 @@ class Ui_MainWindow(object):
         self.label_occurrenceCount.setStyleSheet("color: blue;\n""font: 75 10pt \"Arial\";")
         self.formLayout.setWidget(8, QtWidgets.QFormLayout.LabelRole, self.label_occurrenceCount)
         self.gridLayout_search_collapse.addWidget(self.frame_search_collapse, 0, 0, 1, 1)
-
         self.horizontalLayout_2.addLayout(self.gridLayout_search_collapse)
 
         # RSS icon
@@ -436,9 +462,8 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "RSS Feeder"))
         self.label_2.setText(_translate("MainWindow", "Liste des bulletins de nouvelles"))
-        self.btn_search.setText(_translate("MainWindow", "Rechercher"))
+        self.btn_search.setText(_translate("MainWindow", "Recherche/Occurrences"))
         self.btn_details.setText(_translate("MainWindow", "Afficher les détails"))
-        self.btn_occurrence.setText(_translate("MainWindow", "Occurrences"))
 
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Titre"))
@@ -446,14 +471,12 @@ class Ui_MainWindow(object):
         item.setText(_translate("MainWindow", "Source"))
         item = self.tableWidget.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "Date"))
-        __sortingEnabled = self.tableWidget.isSortingEnabled()
-        self.tableWidget.setSortingEnabled(True)
-        self.tableWidget.setSortingEnabled(__sortingEnabled)
 
         self.updateData()
         self.tableWidget.resizeColumnsToContents()
         self.tableWidget.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
-        self.tableWidget.horizontalHeader().setStretchLastSection(True)
+        self.tableWidget.horizontalHeader().setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
+        self.tableWidget.horizontalHeader().setStretchLastSection(False)
         self.tableWidget.setItemDelegate(HTMLDelegate(self.tableWidget))
 
         self.label_4.setText(_translate("MainWindow", "Nom d\'entreprise :"))

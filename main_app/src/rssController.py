@@ -67,7 +67,7 @@ class RssController(object):
     def getAllExistingData(self):
         documents = []
         self.rssCollection.delete_many({"rss_address": ""})
-        cursor = self.rssCollection.find({}, {"_id":0, "news_title":1, "rss_address":1, "news_date":1}).sort("news_date", -1)
+        cursor = self.rssCollection.find({"is_subscribed":True}, {"_id":0, "news_title":1, "rss_address":1, "news_date":1}).sort("news_date", -1)
         for document in cursor:
             documents.append(document)
 
