@@ -25,23 +25,21 @@ class RssController(object):
         self.deleteDuplicatedNews(rssAddress)
 
     def updateRssEntries(self):
-        rssAddressList = self.rssCollection.distinct("rss_address")
+        rssAddressList = self.rssCollection.find({"is_subscribed": True}, {"_id": 0, "rss_address":1}).distinct("rss_address")
         rssCategory = ""
         updateFreq = ""
         for rssAddress in rssAddressList:
             cursor = self.rssCollection.find(
-                {"rss_address": rssAddress, "is_subscribed": True},
-                {"_id": 0, "rss_category": 1, "update_freq": 1}).sort("news_date", -1)
+                {"rss_address": rssAddress}, {"_id": 0, "rss_category": 1, "update_freq": 1}).sort("news_date", -1)
             for document in cursor:
                 rssCategory = document["rss_category"]
                 updateFreq = document["update_freq"]
             # get and save updated entries
             self.getAndSaveRssEntries(rssAddress, rssCategory, updateFreq)
-            print(rssAddress)
 
     def deleteDuplicatedNews(self, rssAddress):
         titlesList = []
-        cursor = self.rssCollection.find({"rss_address": rssAddress}, {"news_title": 1}).sort("news_date", -1)
+        cursor = self.rssCollection.find({"rss_address": rssAddress}, {"_id": 0, "news_title": 1}).sort("news_date", -1)
         for document in cursor:
             title = document["news_title"]
             titlesList.append(title)
@@ -68,10 +66,9 @@ class RssController(object):
     def getAllExistingData(self):
         documents = []
         self.rssCollection.delete_many({"rss_address": ""})
-        cursor = self.rssCollection.find({"is_subscribed":True}, {"_id":0, "news_title":1, "rss_address":1, "news_date":1}).sort("news_date", -1)
+        cursor = self.rssCollection.find({}).sort("news_date", -1)
         for document in cursor:
             documents.append(document)
-
         return documents
 
     def getAllRssAddresses(self):

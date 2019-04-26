@@ -6,6 +6,7 @@ from main_app.GUI.unsubscribe_gui import Ui_UnsubscribeWindow
 from main_app.GUI.delete_gui import Ui_DeleteRssWindow
 from main_app.src.htmlDelegate import HTMLDelegate
 from main_app.src.rssController import RssController
+import math
 
 
 class Ui_MainWindow(object):
@@ -27,9 +28,12 @@ class Ui_MainWindow(object):
         self.occurrenceWord = ""
         self.rssController.updateRssEntries()
         self.dataList = self.rssController.getAllExistingData()
-        self.pageIndex = 1
-        self.btn_nextpage.setEnabled(True)
-        self.displayData(self.dataList, self.pageIndex)
+        if len(self.dataList) == 0:
+            self.tableWidget.setRowCount(0)
+        else:
+            self.pageIndex = 1
+            self.btn_nextpage.setEnabled(True)
+            self.displayData(self.dataList, self.pageIndex)
 
     def loadPreviousPage(self):
         self.btn_nextpage.setEnabled(True)
@@ -156,7 +160,7 @@ class Ui_MainWindow(object):
         if len(dataList) < 25:
             pagesCount = 1
         else:
-            pagesCount = round(len(dataList) / 25)
+            pagesCount = math.ceil(len(dataList) / 25)
         self.label_pagenbr.setText("page " + str(pageIndex) + "/" + str(pagesCount))
         startIndex = (pageIndex - 1) * 25
         if pageIndex == 1:
@@ -294,7 +298,7 @@ class Ui_MainWindow(object):
         self.tableWidget.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectRows)
         self.tableWidget.setGridStyle(QtCore.Qt.DotLine)
 
-        self.tableWidget.setRowCount(25)
+        #self.tableWidget.setRowCount(25)
         self.tableWidget.setColumnCount(3)
         self.tableWidget.setObjectName("tableWidget")
 
@@ -467,7 +471,7 @@ class Ui_MainWindow(object):
         self.tableWidget.resizeColumnsToContents()
         self.tableWidget.horizontalHeader().setSectionResizeMode(0, QtWidgets.QHeaderView.Stretch)
         self.tableWidget.horizontalHeader().setSectionResizeMode(1, QtWidgets.QHeaderView.Stretch)
-        self.tableWidget.horizontalHeader().setStretchLastSection(False)
+        self.tableWidget.horizontalHeader().setStretchLastSection(True)
         self.tableWidget.setItemDelegate(HTMLDelegate(self.tableWidget))
 
         self.label_4.setText(_translate("MainWindow", "Nom d\'entreprise :"))
@@ -488,8 +492,8 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     app.setStyle('Fusion')
-    UnsubscribeWindow = QtWidgets.QMainWindow()
+    MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
-    ui.setupUi(UnsubscribeWindow)
-    UnsubscribeWindow.show()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
     sys.exit(app.exec_())
