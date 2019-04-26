@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6a94509-63ec-40f6-963c-ba78e3c9416f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/RSS_Feeder.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/RSS_Feeder.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_app/GUI/main_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/GUI/main_gui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_app/GUI/occ_gui.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_app/src/rssController.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/src/rssController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/test/unit/test_rssController.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/test/unit/test_rssController.py" afterDir="false" />
     </list>
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,7 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/RSS_Feeder$main.coverage" NAME="main Coverage Results" MODIFIED="1556240523669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$main.coverage" NAME="main Coverage Results" MODIFIED="1556255917199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$test_new.coverage" NAME="test_new Coverage Results" MODIFIED="1555785791216" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/GUI" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$main_gui.coverage" NAME="main_gui Coverage Results" MODIFIED="1556235459089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/GUI" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$rss_controller.coverage" NAME="rss_controller Coverage Results" MODIFIED="1551049315774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/src" />
@@ -30,7 +26,7 @@
     <SUITE FILE_PATH="coverage/RSS_Feeder$new_gui.coverage" NAME="new_gui Coverage Results" MODIFIED="1552541809418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/GUI" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$rss_gui.coverage" NAME="rss_gui Coverage Results" MODIFIED="1551640520870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/GUI" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$collapse_gui.coverage" NAME="collapse_gui Coverage Results" MODIFIED="1553117763245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/GUI" />
-    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test_rssController_py.coverage" NAME="Unittests in test_rssController.py Coverage Results" MODIFIED="1556165241040" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/unit" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test_rssController_py.coverage" NAME="Unittests in test_rssController.py Coverage Results" MODIFIED="1556255852130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/unit" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$old_main_gui.coverage" NAME="old_main_gui Coverage Results" MODIFIED="1556234978761" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/GUI" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test_create_rss_db_py.coverage" NAME="Unittests in test_create_rss_db.py Coverage Results" MODIFIED="1552336866739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/unit" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$htmlDelegate.coverage" NAME="htmlDelegate Coverage Results" MODIFIED="1555127319673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/src" />
@@ -60,11 +56,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main_app/test/unit/test_rssController.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main_app/GUI/main_gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="163" column="8" selection-start-line="163" selection-start-column="8" selection-end-line="163" selection-end-column="8" />
+            <state relative-caret-position="82">
+              <caret line="91" column="29" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="29" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
               </folding>
@@ -73,10 +81,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main_app/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="8" lean-forward="true" selection-start-line="3" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main_app/src/rssController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
-              <caret line="71" selection-start-line="71" selection-end-line="71" />
+            <state relative-caret-position="816">
+              <caret line="68" column="44" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="44" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -95,11 +112,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>page</find>
-      <find>table</find>
-      <find>setRowCount</find>
-      <find>btn_nextpage</find>
-      <find>rss_logo</find>
       <find>tableWidget.setRowCount</find>
       <find>startRow</find>
       <find>occurr</find>
@@ -123,8 +135,13 @@
       <find>getAllExistingData</find>
       <find>updateRssEntries</find>
       <find>.find</find>
-      <find>print</find>
       <find>displayData</find>
+      <find>print</find>
+      <find>delete</find>
+      <find>searchNewsByTitle</find>
+      <find>searchNewsByTitl</find>
+      <find>getNewsTitles</find>
+      <find>getall</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -162,11 +179,11 @@
         <option value="$PROJECT_DIR$/main_app/GUI/delete_gui.py" />
         <option value="$PROJECT_DIR$/main_app/GUI/test_new.py" />
         <option value="$PROJECT_DIR$/main_app/src/test_rssController.py" />
-        <option value="$PROJECT_DIR$/main_app/test/unit/test_rssController.py" />
         <option value="$PROJECT_DIR$/main_app/main.py" />
         <option value="$PROJECT_DIR$/main_app/GUI/old_main_gui.py" />
         <option value="$PROJECT_DIR$/main_app/src/rssController.py" />
         <option value="$PROJECT_DIR$/main_app/GUI/main_gui.py" />
+        <option value="$PROJECT_DIR$/main_app/test/unit/test_rssController.py" />
       </list>
     </option>
   </component>
@@ -221,17 +238,6 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="unit" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RSS_Feeder" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RSS_Feeder" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
-              <item name="Scripts" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -242,7 +248,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/main_app/test/unit" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -357,35 +363,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="unsubscribe_gui" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Unittests in test_rssController.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="RSS_Feeder" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main_app/GUI" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main_app/test/unit" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main_app/GUI/unsubscribe_gui.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/main_app/test/unit/test_rssController.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python tests.Unittests in test_rssController.py" />
         <item itemvalue="Python.main_gui" />
         <item itemvalue="Python.old_main_gui" />
         <item itemvalue="Python.add_rss_gui" />
-        <item itemvalue="Python.unsubscribe_gui" />
       </list>
     </recent_temporary>
   </component>
@@ -451,55 +450,54 @@
       <workItem from="1556037064336" duration="31693000" />
       <workItem from="1556158338519" duration="8940000" />
       <workItem from="1556167378216" duration="934000" />
-      <workItem from="1556211026369" duration="11183000" />
+      <workItem from="1556211026369" duration="25504000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.24 at 23h 48m 18s.xml">
+    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 00h 38m 48s.xml">
       <configuration name="Unittests in test_rssController.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.24 at 23h 56m 44s.xml">
+    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 00h 40m 53s.xml">
       <configuration name="Unittests in test_rssController.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.24 at 23h 57m 38s.xml">
+    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 00h 55m 26s.xml">
       <configuration name="Unittests in test_rssController.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.24 at 23h 58m 59s.xml">
+    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 01h 04m 38s.xml">
       <configuration name="Unittests in test_rssController.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.25 at 00h 01m 05s.xml">
+    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 01h 04m 55s.xml">
       <configuration name="Unittests in test_rssController.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.25 at 00h 04m 11s.xml">
+    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 01h 05m 53s.xml">
       <configuration name="Unittests in test_rssController.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.25 at 00h 05m 08s.xml">
+    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 01h 07m 57s.xml">
       <configuration name="Unittests in test_rssController.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.25 at 00h 06m 48s.xml">
+    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 01h 08m 28s.xml">
       <configuration name="Unittests in test_rssController.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.25 at 00h 07m 20s.xml">
+    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 01h 11m 17s.xml">
       <configuration name="Unittests in test_rssController.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.25 at 00h 07m 23s.xml">
+    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 01h 17m 36s.xml">
       <configuration name="Unittests in test_rssController.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="324724000" />
+    <option name="totallyTimeSpent" value="339045000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.18381241" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.24886535" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32569557" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.2618658" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.2913257" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -515,7 +513,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32980332" />
       <window_info anchor="right" id="Mongo Explorer" order="4" sideWeight="0.4967742" weight="0.16263238" />
-      <window_info anchor="right" id="Coverage" order="5" sideWeight="0.5032258" side_tool="true" weight="0.15582451" />
+      <window_info anchor="right" id="Coverage" order="5" sideWeight="0.5032258" side_tool="true" visible="true" weight="0.19894099" />
       <window_info anchor="right" id="Database" order="6" weight="0.32980332" />
     </layout>
     <layout-to-restore>
@@ -649,16 +647,6 @@
     <entry file="file://$PROJECT_DIR$/main_app/src/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/test/unit/test_rssController.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main_app/GUI/add_rss_gui.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-138">
@@ -666,16 +654,6 @@
           <folding>
             <element signature="n#!!doc" />
             <element signature="e#199#209#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="36" column="11" selection-start-line="23" selection-start-column="4" selection-end-line="36" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -690,22 +668,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/src/rssController.py">
+    <entry file="file://$PROJECT_DIR$/main_app/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="71" selection-start-line="71" selection-end-line="71" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="51">
+          <caret line="3" column="8" lean-forward="true" selection-start-line="3" selection-end-line="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main_app/GUI/main_gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="163" column="8" selection-start-line="163" selection-start-column="8" selection-end-line="163" selection-end-column="8" />
+        <state relative-caret-position="82">
+          <caret line="91" column="29" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="29" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/test/unit/test_rssController.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/src/rssController.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="68" column="44" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
