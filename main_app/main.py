@@ -3,6 +3,11 @@ from PyQt5 import QtWidgets, QtGui
 from main_app.GUI.main_gui import Ui_MainWindow
 import pymongo
 
+
+class MainWindow(Ui_MainWindow):
+    def __init__(self):
+        self.main_ui = Ui_MainWindow()
+
 def create_rss_db():
     client = pymongo.MongoClient()
     dbList = client.list_database_names()
@@ -12,7 +17,7 @@ def create_rss_db():
         rss_collection.insert_one({"rss_address": "", "rss_category": "", "update_freq": "", "news_title": "null title",
                                 "news_link": "", "news_summary": "", "news_date": "", "is_subscribed": ""})
 
-class MainWindow(Ui_MainWindow):
+if __name__ == "__main__":
     # create the rssDB if it does not exist
     create_rss_db()
     # Show main window

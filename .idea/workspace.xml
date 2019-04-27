@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6a94509-63ec-40f6-963c-ba78e3c9416f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/main_app/test/unit/test_rssController.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/test/unit/test_rssController.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/GUI/add_rss_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/GUI/add_rss_gui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/GUI/delete_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/GUI/delete_gui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/GUI/unsubscribe_gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/GUI/unsubscribe_gui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/src/htmlDelegate.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/src/htmlDelegate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_app/test/unit/test_create_rss_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_app/test/unit/test_create_rss_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/pip-selfcheck.json" beforeDir="false" afterPath="$PROJECT_DIR$/venv/pip-selfcheck.json" afterDir="false" />
     </list>
     <ignored path=".idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -12,27 +19,34 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/RSS_Feeder$main.coverage" NAME="main Coverage Results" MODIFIED="1556255917199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test_ui_DeleteRssWindow_py.coverage" NAME="Unittests in test_ui_DeleteRssWindow.py Coverage Results" MODIFIED="1556327196656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/functional" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$main.coverage" NAME="main Coverage Results" MODIFIED="1556327268753" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$test_new.coverage" NAME="test_new Coverage Results" MODIFIED="1555785791216" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/GUI" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$main_gui.coverage" NAME="main_gui Coverage Results" MODIFIED="1556235459089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/GUI" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_functional.coverage" NAME="Unittests in functional Coverage Results" MODIFIED="1556327175383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/functional" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$rss_controller.coverage" NAME="rss_controller Coverage Results" MODIFIED="1551049315774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/src" />
-    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test_addRssFeeds_py.coverage" NAME="Unittests in test_addRssFeeds.py Coverage Results" MODIFIED="1551238884130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/functional" />
-    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test_database_py.coverage" NAME="Unittests in test_database.py Coverage Results" MODIFIED="1551740894349" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/unit" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$search_gui.coverage" NAME="search_gui Coverage Results" MODIFIED="1552938551228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/GUI" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$delete_gui.coverage" NAME="delete_gui Coverage Results" MODIFIED="1556219173378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/GUI" />
-    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test_main_py.coverage" NAME="Unittests in test_main.py Coverage Results" MODIFIED="1551743755875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/unit" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$test.coverage" NAME="test Coverage Results" MODIFIED="1555124392949" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/src" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$rssController.coverage" NAME="rssController Coverage Results" MODIFIED="1552667989606" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/src" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test.coverage" NAME="Unittests in test Coverage Results" MODIFIED="1556326633631" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$new_gui.coverage" NAME="new_gui Coverage Results" MODIFIED="1552541809418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/GUI" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test_rssController_py.coverage" NAME="Unittests in test_rssController.py Coverage Results" MODIFIED="1556327241865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/unit" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_for_test_ui_MainWindow_TestUi_MainWindow_test_openAddRssWindow_open_addRssWindow_when_clicking_subscribeBtn.coverage" NAME="Unittests for test_ui_MainWindow.TestUi_MainWindow.test_openAddRssWindow_open_addRssWindow_when_clicking_subscribeBtn Coverage Results" MODIFIED="1556299795904" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/functional" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test_create_rss_db_py.coverage" NAME="Unittests in test_create_rss_db.py Coverage Results" MODIFIED="1556327231160" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/unit" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$htmlDelegate.coverage" NAME="htmlDelegate Coverage Results" MODIFIED="1555127319673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/src" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test_ui_AddRssWindow_py.coverage" NAME="Unittests in test_ui_AddRssWindow.py Coverage Results" MODIFIED="1556327189458" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/functional" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test_ui_UnsubscribeWindow_py.coverage" NAME="Unittests in test_ui_UnsubscribeWindow.py Coverage Results" MODIFIED="1556327224917" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/functional" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test_addRssFeeds_py.coverage" NAME="Unittests in test_addRssFeeds.py Coverage Results" MODIFIED="1551238884130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/functional" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test_database_py.coverage" NAME="Unittests in test_database.py Coverage Results" MODIFIED="1551740894349" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/unit" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test_main_py.coverage" NAME="Unittests in test_main.py Coverage Results" MODIFIED="1551743755875" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/unit" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$rss_gui.coverage" NAME="rss_gui Coverage Results" MODIFIED="1551640520870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/GUI" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$collapse_gui.coverage" NAME="collapse_gui Coverage Results" MODIFIED="1553117763245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/GUI" />
-    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test_rssController_py.coverage" NAME="Unittests in test_rssController.py Coverage Results" MODIFIED="1556255852130" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/unit" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$old_main_gui.coverage" NAME="old_main_gui Coverage Results" MODIFIED="1556234978761" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/GUI" />
-    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test_create_rss_db_py.coverage" NAME="Unittests in test_create_rss_db.py Coverage Results" MODIFIED="1552336866739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/unit" />
-    <SUITE FILE_PATH="coverage/RSS_Feeder$htmlDelegate.coverage" NAME="htmlDelegate Coverage Results" MODIFIED="1555127319673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/src" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_unit.coverage" NAME="Unittests in unit Coverage Results" MODIFIED="1556160412852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/unit" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$add_rss_gui.coverage" NAME="add_rss_gui Coverage Results" MODIFIED="1556234693701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/GUI" />
     <SUITE FILE_PATH="coverage/RSS_Feeder$unsubscribe_gui.coverage" NAME="unsubscribe_gui Coverage Results" MODIFIED="1556219183092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/GUI" />
+    <SUITE FILE_PATH="coverage/RSS_Feeder$Unittests_in_test_ui_MainWindow_py.coverage" NAME="Unittests in test_ui_MainWindow.py Coverage Results" MODIFIED="1556327203124" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/main_app/test/functional" />
   </component>
   <component name="CoverageOptionsProvider">
     <option name="myAddOrReplace" value="1" />
@@ -56,47 +70,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main_app/test/unit/test_rssController.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main_app/GUI/main_gui.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="82">
-              <caret line="91" column="29" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#42#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main_app/main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="8" lean-forward="true" selection-start-line="3" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main_app/src/rssController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="816">
-              <caret line="68" column="44" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="44" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="17">
+              <caret line="1" column="27" lean-forward="true" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -112,21 +90,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tableWidget.setRowCount</find>
-      <find>startRow</find>
-      <find>occurr</find>
-      <find>setSearchTable</find>
-      <find>showSelectedNewsContent</find>
-      <find>.sort</find>
-      <find>setSortingEnabled</find>
-      <find>loadPreviousPage</find>
-      <find>loadNextPage</find>
-      <find>color</find>
-      <find>btn_occurrence</find>
-      <find>rssController</find>
-      <find>is_subscribed</find>
-      <find>eWidget.resizeColumnsToContents</find>
-      <find>openAddRssWindow</find>
       <find>def update</find>
       <find>def updateData</find>
       <find>self.occurrenceWord</find>
@@ -135,13 +98,28 @@
       <find>getAllExistingData</find>
       <find>updateRssEntries</find>
       <find>.find</find>
-      <find>displayData</find>
       <find>print</find>
       <find>delete</find>
       <find>searchNewsByTitle</find>
       <find>searchNewsByTitl</find>
       <find>getNewsTitles</find>
       <find>getall</find>
+      <find>openAddRssWindow</find>
+      <find>mouseClick</find>
+      <find>updateData</find>
+      <find>detailsView</find>
+      <find>showSearchArea</find>
+      <find>submitSearch</find>
+      <find>findCompanyNameAndKeyWordNews</find>
+      <find>setSearchTable</find>
+      <find>submitOccurrence</find>
+      <find>cancelOccurrence</find>
+      <find>test_app</find>
+      <find>submitRemoval</find>
+      <find>rssController</find>
+      <find>submitUnsubscription</find>
+      <find>validate</find>
+      <find>displayData</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -166,30 +144,34 @@
         <option value="$USER_HOME$/Documents/Cours Hiver 2019/GLO-3002 Projet en Génie logiciel/rss_gui.py" />
         <option value="$PROJECT_DIR$/main_app/test/test_create_rss_db.py" />
         <option value="$PROJECT_DIR$/main_app/test_create_rss_db.py" />
-        <option value="$PROJECT_DIR$/main_app/test/unit/test_create_rss_db.py" />
         <option value="$PROJECT_DIR$/main_app/GUI/new_gui.py" />
-        <option value="$PROJECT_DIR$/main_app/GUI/add_rss_gui.py" />
         <option value="$PROJECT_DIR$/main_app/GUI/search_gui.py" />
         <option value="$PROJECT_DIR$/main_app/GUI/collapse_gui.py" />
         <option value="$PROJECT_DIR$/main_app/GUI/browser_gui.py" />
         <option value="$PROJECT_DIR$/main_app/src/test.py" />
-        <option value="$PROJECT_DIR$/main_app/src/htmlDelegate.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/main_app/GUI/unsubscribe_gui.py" />
-        <option value="$PROJECT_DIR$/main_app/GUI/delete_gui.py" />
         <option value="$PROJECT_DIR$/main_app/GUI/test_new.py" />
         <option value="$PROJECT_DIR$/main_app/src/test_rssController.py" />
-        <option value="$PROJECT_DIR$/main_app/main.py" />
         <option value="$PROJECT_DIR$/main_app/GUI/old_main_gui.py" />
         <option value="$PROJECT_DIR$/main_app/src/rssController.py" />
         <option value="$PROJECT_DIR$/main_app/GUI/main_gui.py" />
         <option value="$PROJECT_DIR$/main_app/test/unit/test_rssController.py" />
+        <option value="$PROJECT_DIR$/main_app/test/functional/test_ui_MainWindow.py" />
+        <option value="$PROJECT_DIR$/main_app/GUI/add_rss_gui.py" />
+        <option value="$PROJECT_DIR$/main_app/test/functional/test_ui_AddRssWindow.py" />
+        <option value="$PROJECT_DIR$/main_app/test/functional/test_ui_DeleteRssWindow.py" />
+        <option value="$PROJECT_DIR$/main_app/test/functional/test_ui_UnsubscribeWindow.py" />
+        <option value="$PROJECT_DIR$/main_app/GUI/delete_gui.py" />
+        <option value="$PROJECT_DIR$/main_app/GUI/unsubscribe_gui.py" />
+        <option value="$PROJECT_DIR$/main_app/src/htmlDelegate.py" />
+        <option value="$PROJECT_DIR$/main_app/test/unit/test_create_rss_db.py" />
+        <option value="$PROJECT_DIR$/main_app/main.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-89" />
-    <option name="y" value="4" />
+    <option name="x" value="78" />
+    <option name="y" value="61" />
     <option name="width" value="1118" />
     <option name="height" value="732" />
   </component>
@@ -236,6 +218,13 @@
               <item name="RSS_Feeder" type="462c0819:PsiDirectoryNode" />
               <item name="main_app" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="functional" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RSS_Feeder" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RSS_Feeder" type="462c0819:PsiDirectoryNode" />
+              <item name="main_app" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="unit" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -248,7 +237,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/main_app/test/unit" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/main_app/test/functional" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -275,28 +264,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.main">
-    <configuration name="add_rss_gui" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="RSS_Feeder" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main_app/GUI" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main_app/GUI/add_rss_gui.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="RSS_Feeder" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -319,48 +286,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main_gui" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="Unittests in test_create_rss_db.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="RSS_Feeder" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main_app/GUI" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main_app/test/unit" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main_app/GUI/main_gui.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="old_main_gui" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="RSS_Feeder" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main_app/GUI" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main_app/GUI/old_main_gui.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/main_app/test/unit/test_create_rss_db.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <configuration name="Unittests in test_rssController.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
@@ -378,13 +316,43 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Unittests in test_ui_MainWindow.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="RSS_Feeder" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main_app/test/functional" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/main_app/test/functional/test_ui_MainWindow.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests in test_ui_UnsubscribeWindow.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="RSS_Feeder" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/main_app/test/functional" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/main_app/test/functional/test_ui_UnsubscribeWindow.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
         <item itemvalue="Python tests.Unittests in test_rssController.py" />
-        <item itemvalue="Python.main_gui" />
-        <item itemvalue="Python.old_main_gui" />
-        <item itemvalue="Python.add_rss_gui" />
+        <item itemvalue="Python tests.Unittests in test_create_rss_db.py" />
+        <item itemvalue="Python tests.Unittests in test_ui_UnsubscribeWindow.py" />
+        <item itemvalue="Python tests.Unittests in test_ui_MainWindow.py" />
       </list>
     </recent_temporary>
   </component>
@@ -450,54 +418,56 @@
       <workItem from="1556037064336" duration="31693000" />
       <workItem from="1556158338519" duration="8940000" />
       <workItem from="1556167378216" duration="934000" />
-      <workItem from="1556211026369" duration="25504000" />
+      <workItem from="1556211026369" duration="26599000" />
+      <workItem from="1556296391111" duration="21152000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 00h 38m 48s.xml">
-      <configuration name="Unittests in test_rssController.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_create_rss_db_py - 2019.04.26 at 20h 59m 17s.xml">
+      <configuration name="Unittests in test_create_rss_db.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 00h 40m 53s.xml">
-      <configuration name="Unittests in test_rssController.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_create_rss_db_py - 2019.04.26 at 21h 03m 16s.xml">
+      <configuration name="Unittests in test_create_rss_db.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 00h 55m 26s.xml">
-      <configuration name="Unittests in test_rssController.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_create_rss_db_py - 2019.04.26 at 21h 06m 02s.xml">
+      <configuration name="Unittests in test_create_rss_db.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 01h 04m 38s.xml">
-      <configuration name="Unittests in test_rssController.py" configurationId="tests" />
+    <history-entry file="Unittests_in_functional - 2019.04.26 at 21h 06m 16s.xml">
+      <configuration name="Unittests in functional" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 01h 04m 55s.xml">
-      <configuration name="Unittests in test_rssController.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_ui_AddRssWindow_py - 2019.04.26 at 21h 06m 30s.xml">
+      <configuration name="Unittests in test_ui_AddRssWindow.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 01h 05m 53s.xml">
-      <configuration name="Unittests in test_rssController.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_ui_DeleteRssWindow_py - 2019.04.26 at 21h 06m 37s.xml">
+      <configuration name="Unittests in test_ui_DeleteRssWindow.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 01h 07m 57s.xml">
-      <configuration name="Unittests in test_rssController.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_ui_MainWindow_py - 2019.04.26 at 21h 06m 58s.xml">
+      <configuration name="Unittests in test_ui_MainWindow.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 01h 08m 28s.xml">
-      <configuration name="Unittests in test_rssController.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_ui_UnsubscribeWindow_py - 2019.04.26 at 21h 07m 06s.xml">
+      <configuration name="Unittests in test_ui_UnsubscribeWindow.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 01h 11m 17s.xml">
-      <configuration name="Unittests in test_rssController.py" configurationId="tests" />
+    <history-entry file="Unittests_in_test_create_rss_db_py - 2019.04.26 at 21h 07m 13s.xml">
+      <configuration name="Unittests in test_create_rss_db.py" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 01h 17m 36s.xml">
+    <history-entry file="Unittests_in_test_rssController_py - 2019.04.26 at 21h 07m 26s.xml">
       <configuration name="Unittests in test_rssController.py" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="339045000" />
+    <option name="totallyTimeSpent" value="361292000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.24886535" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.28517398" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32569557" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.2913257" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.31423897" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -513,7 +483,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32980332" />
       <window_info anchor="right" id="Mongo Explorer" order="4" sideWeight="0.4967742" weight="0.16263238" />
-      <window_info anchor="right" id="Coverage" order="5" sideWeight="0.5032258" side_tool="true" visible="true" weight="0.19894099" />
+      <window_info anchor="right" id="Coverage" order="5" sideWeight="0.5032258" side_tool="true" visible="true" weight="0.27609682" />
       <window_info anchor="right" id="Database" order="6" weight="0.32980332" />
     </layout>
     <layout-to-restore>
@@ -570,16 +540,6 @@
     <entry file="file://$PROJECT_DIR$/main_app/test/test_create_rss_db.py" />
     <entry file="file://$PROJECT_DIR$/main_app/test_create_rss_db.py" />
     <entry file="file://$PROJECT_DIR$/main_app/test/unit/test_main.py" />
-    <entry file="file://$PROJECT_DIR$/main_app/test/unit/test_create_rss_db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main_app/GUI/test.py" />
     <entry file="file://$PROJECT_DIR$/../Carbon_Footprint_Tool/manage.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -603,19 +563,7 @@
     <entry file="file://$PROJECT_DIR$/main_app/GUI/img/occurrence_icon.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/src/htmlDelegate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/GUI/occ_gui.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/GUI/occ_gui.py" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3128">
@@ -624,9 +572,74 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main_app/GUI/test_new.py" />
+    <entry file="file://$PROJECT_DIR$/main_app/src/test_rssController.py" />
+    <entry file="file://$PROJECT_DIR$/main_app/src/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/GUI/old_main_gui.py" />
+    <entry file="file://$PROJECT_DIR$/main_app/test/functional/test_ui_AddRssWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="15" column="5" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="15" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/test/functional/test_ui_MainWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="26" column="8" lean-forward="true" selection-start-line="22" selection-start-column="8" selection-end-line="26" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/test/functional/test_ui_DeleteRssWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="25" column="23" lean-forward="true" selection-start-line="24" selection-end-line="25" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/test/functional/test_ui_UnsubscribeWindow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/GUI/add_rss_gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main_app/GUI/delete_gui.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main_app/GUI/main_gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3247">
+          <caret line="191" column="24" selection-start-line="191" selection-start-column="8" selection-end-line="191" selection-end-column="24" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
           </folding>
@@ -635,60 +648,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main_app/GUI/unsubscribe_gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1802">
-          <caret line="106" column="25" selection-start-line="99" selection-end-line="106" selection-end-column="25" />
+        <state>
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/src/test_rssController.py" />
-    <entry file="file://$PROJECT_DIR$/main_app/src/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/GUI/add_rss_gui.py">
+    <entry file="file://$PROJECT_DIR$/main_app/src/htmlDelegate.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-138">
-          <caret line="83" column="16" selection-start-line="83" selection-start-column="14" selection-end-line="83" selection-end-column="16" />
+        <state>
+          <caret lean-forward="true" />
           <folding>
-            <element signature="n#!!doc" />
-            <element signature="e#199#209#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/GUI/old_main_gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="121" column="8" lean-forward="true" selection-start-line="113" selection-start-column="7" selection-end-line="121" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main_app/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="8" lean-forward="true" selection-start-line="3" selection-end-line="4" />
+        <state relative-caret-position="325">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main_app/GUI/main_gui.py">
+    <entry file="file://$PROJECT_DIR$/main_app/test/unit/test_create_rss_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="91" column="29" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="29" />
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main_app/test/unit/test_rssController.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="17" column="43" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+        <state relative-caret-position="2074">
+          <caret line="122" column="20" lean-forward="true" selection-start-line="119" selection-end-line="122" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -697,11 +697,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main_app/src/rssController.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="68" column="44" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="17">
+          <caret line="1" column="27" lean-forward="true" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
         </state>
       </provider>
     </entry>

@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'add_rss_gui.ui'
-#
-# Created by: PyQt5 UI code generator 5.11.3
-#
-# WARNING! All changes made in this file will be lost!
 import sys
 from PyQt5 import QtCore, QtWidgets
 from main_app.src.rssController import RssController
@@ -21,7 +14,6 @@ class Ui_AddRssWindow(object):
             save = rssController.getAndSaveRssEntries
             save(rssAddress, rssCategory, updateFreq)
             self.btn_cancel_add.click()
-
 
     def setupUi(self, AddRssWindow):
         AddRssWindow.setObjectName("AddRssWindow")

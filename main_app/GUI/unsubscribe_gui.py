@@ -1,5 +1,7 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
+
 from main_app.src.rssController import RssController
+
 
 class Ui_UnsubscribeWindow(object):
     def submitUnsubscription(self):

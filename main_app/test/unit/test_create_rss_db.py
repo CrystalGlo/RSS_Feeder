@@ -19,5 +19,5 @@ class TestCreateRssDb(unittest.TestCase):
         self.assertTrue("rss_collection" in collectionList)
 
 
-suite = unittest.TestLoader().loadTestsFromTestCase(TestCreateRssDb)
-unittest.TextTestRunner(verbosity=2).run(suite)
+if __name__ == '__main__':
+    unittest.main()

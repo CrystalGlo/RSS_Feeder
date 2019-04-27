@@ -1,6 +1,7 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
 import html
-from PyQt5.QtCore import QSize
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class HTMLDelegate(QtWidgets.QStyledItemDelegate):
     def __init__(self, parent=None):
